@@ -3,7 +3,7 @@ import React from "react";
 export default function Loader() {
   return (
     <div className="loader">
-      <style jsx>{`
+      <style jsx="true">{`
         .loader {
           width: 100%;
           height: 100%;
