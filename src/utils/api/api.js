@@ -30,9 +30,9 @@ class ApiClient {
   };
 }
 export default class Api extends ApiClient {
-  getYarns = async () => {
+  getYarns = async (params) => {
     try {
-      const results = await this.init()?.get("yarns");
+      const results = await this.init()?.get("yarns", { params });
       return results.data;
     } catch (err) {
       handleError(err);

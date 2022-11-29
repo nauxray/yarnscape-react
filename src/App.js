@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
           <Route path="/add-yarn" element={<div>add yarn</div>} />
           <Route path="/account" element={<div>account</div>} />
           <Route path="/login" element={<div>Login</div>} />
-          <Route path="/" element={<div>home</div>} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </div>
     </BrowserRouter>
