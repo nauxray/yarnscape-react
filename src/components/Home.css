@@ -54,12 +54,12 @@
 .top-rated {
   margin-top: 1rem;
   display: flex;
-  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
 @media only screen and (max-width: 720px) {
-  .search-prompt {
+  .search-prompt,
+  .yarn-suggestions > p {
     font-size: 1.25rem;
   }
 }
