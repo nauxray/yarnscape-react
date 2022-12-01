@@ -6,9 +6,12 @@ import { BiMenuAltLeft } from "react-icons/bi";
 import Api from "../utils/api/api";
 import Card from "./Card";
 import Loader from "./Loader";
+import useModal from "../hooks/useModal";
+import FilterSortModal from "./FilterSortModal";
 
 export default function Home() {
   const api = new Api();
+  const { isShowing, toggle } = useModal();
 
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState([]);
@@ -40,8 +43,17 @@ export default function Home() {
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && searchName.length > 0) {
-      setSearchParams({ name: searchName });
+      const newParams = { ...searchParams };
+      newParams.name = searchName;
+      setSearchParams(newParams);
     }
+  };
+
+  const filtersApplied = () => {
+    const filters = Object.keys(searchParams).filter(
+      (param) => param !== "name" && param !== "sort"
+    );
+    return filters.length;
   };
 
   return (
@@ -56,11 +68,23 @@ export default function Home() {
           onChange={(e) => setSearchName(e.target.value)}
           onKeyDown={handleKeyPress}
         />
-        {/* Todo: open modal */}
-        <div className="search-filter-sort">
+        <div className="search-filter-sort" onClick={toggle}>
           <span>Filter/Sort</span>
           <BiMenuAltLeft size={20} />
+          {filtersApplied() > 0 && (
+            <div className="filters-applied">{filtersApplied()}</div>
+          )}
         </div>
+        <FilterSortModal
+          isShowing={isShowing}
+          hide={toggle}
+          searchParams={searchParams}
+          setSearchParams={(val) => {
+            setSearchParams(
+              searchName.length > 0 ? { name: searchName, ...val } : val
+            );
+          }}
+        />
       </div>
       {/* results */}
       <div className="search-results">
@@ -87,12 +111,12 @@ export default function Home() {
         <img src="/hero.jpg" alt="hero" width={"100%"} />
       </div>
       {/* suggestions */}
-      {topRated.length > 0 && (
+      {topRated?.length > 0 && (
         <div className="yarn-suggestions">
           <p>Don't know what you're looking for?</p>
           <p>Take a look at our top-rated yarns.</p>
           <div className="top-rated">
-            {topRated.map((item) => (
+            {topRated?.map((item) => (
               <Card key={item._id} yarn={item} />
             ))}
           </div>
