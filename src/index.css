@@ -6,6 +6,7 @@ body {
     "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
@@ -19,4 +20,18 @@ code {
   --dark-gray: #353535;
   --dark-grey2: #444444;
   --light-blue: #7284a8;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--main-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--beige-yellow);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: white;
 }
