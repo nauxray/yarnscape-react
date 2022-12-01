@@ -1,9 +1,13 @@
+import "./FilterSortModal.css";
+
 import React, { useEffect, useState } from "react";
-import Modal from "./Modal";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import { Tooltip } from "react-tippy";
+
+import Api from "../utils/api/api";
 import Button from "./Button";
 import Loader from "./Loader";
-import Api from "../utils/api/api";
-import "./FilterSortModal.css";
+import Modal from "./Modal";
 
 const sortOptions = [
   {
@@ -105,6 +109,17 @@ export default function FilterSortModal({
                   </option>
                 ))}
               </select>
+              {brand !== " " && (
+                <Tooltip
+                  title={
+                    brandsData?.find((item) => item._id === brand)?.description
+                  }
+                  position="right"
+                  hideOnClick={false}
+                >
+                  <AiOutlineInfoCircle className="info" size={20} />
+                </Tooltip>
+              )}
             </section>
 
             <section className="criteria">
