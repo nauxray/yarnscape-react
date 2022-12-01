@@ -29,6 +29,18 @@
 .search-filter-sort:hover {
   color: var(--beige-yellow);
 }
+.filters-applied {
+  background-color: var(--main-bg);
+  color: var(--beige-yellow);
+  border: 2px solid white;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .search-results {
   width: 85%;
   min-height: 5rem;
