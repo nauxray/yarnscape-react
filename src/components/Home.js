@@ -2,19 +2,20 @@ import "./Home.css";
 
 import React, { useEffect, useState } from "react";
 import { BiMenuAltLeft } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
+import useModal from "../hooks/useModal";
 import Api from "../utils/api/api";
 import Card from "./Card";
-import Loader from "./Loader";
-import useModal from "../hooks/useModal";
 import FilterSortModal from "./FilterSortModal";
+import Loader from "./Loader";
 
 export default function Home() {
   const api = new Api();
   const { isShowing, toggle } = useModal();
 
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(null);
   const [topRated, setTopRated] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [searchParams, setSearchParams] = useState({});
@@ -87,6 +88,11 @@ export default function Home() {
         />
       </div>
       {/* results */}
+      {!loading && results !== null && (
+        <div className="search-results-header">
+          {results?.length} result{results?.length === 1 ? "" : "s"} found
+        </div>
+      )}
       <div className="search-results">
         {loading ? (
           <div
@@ -98,12 +104,17 @@ export default function Home() {
           >
             <Loader />
           </div>
-        ) : results?.length > 0 ? (
-          results?.map((item) => <Card key={item._id} yarn={item} />)
         ) : (
-          <div style={{ textAlign: "center" }}>
-            {Object.keys(searchParams).length > 0 ? "No match found" : ""}
-          </div>
+          results?.length > 0 &&
+          results?.map((item) => (
+            <Link
+              key={item._id}
+              to={`/yarn/${item._id}`}
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <Card yarn={item} />
+            </Link>
+          ))
         )}
       </div>
       {/* hero */}
@@ -117,7 +128,13 @@ export default function Home() {
           <p>Take a look at our top-rated yarns.</p>
           <div className="top-rated">
             {topRated?.map((item) => (
-              <Card key={item._id} yarn={item} />
+              <Link
+                key={item._id}
+                to={`/yarn/${item._id}`}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <Card yarn={item} />
+              </Link>
             ))}
           </div>
         </div>

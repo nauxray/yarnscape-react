@@ -2,14 +2,15 @@ import "./App.css";
 import "react-tippy/dist/tippy.css";
 import "react-toastify/dist/ReactToastify.css";
 
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
+import Account from "./components/Account";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
-import { useState } from "react";
-import Account from "./components/Account";
+import YarnDetails from "./components/YarnDetails";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,6 +32,7 @@ function App() {
         />
         <Routes>
           <Route path="/add-yarn" element={<div>add yarn</div>} />
+          <Route path="/yarn/:id" element={<YarnDetails />} />
           <Route
             path="/account"
             element={<Account key={user} user={user} setUser={setUser} />}
