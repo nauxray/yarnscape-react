@@ -55,4 +55,7 @@
     width: 100%;
     margin: 1rem auto;
   }
+  .login-header {
+    font-size: 1.5rem;
+  }
 }
