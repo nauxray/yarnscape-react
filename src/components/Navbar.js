@@ -1,11 +1,12 @@
 import "./Navbar.css";
 
 import React from "react";
-import { Link } from "react-router-dom";
-import { FiMenu } from "react-icons/fi";
-import { CiSearch } from "react-icons/ci";
 import { AiOutlineClose } from "react-icons/ai";
+import { CiSearch } from "react-icons/ci";
+import { FiMenu } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
+import Api from "../utils/api/api";
 import Button from "./Button";
 
 class Navbar extends React.Component {
@@ -18,10 +19,28 @@ class Navbar extends React.Component {
 
     this.openSideNav = this.openSideNav.bind(this);
     this.closeSideNav = this.closeSideNav.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   openSideNav = () => this.setState({ navOpen: true });
   closeSideNav = () => this.setState({ navOpen: false });
+
+  fetchUser = async (token) => {
+    const tokens = token.split(".");
+    const userId = JSON.parse(atob(tokens[1])).userId;
+    const user = await new Api()?.getUser(userId);
+    this.props.setUser(user);
+  };
+
+  logout = () => {
+    localStorage.removeItem("token");
+    this.props.setUser(null);
+  };
+
+  componentDidMount() {
+    const token = localStorage.getItem("token");
+    if (token) this.fetchUser(token);
+  }
 
   render() {
     return (
@@ -49,14 +68,23 @@ class Navbar extends React.Component {
             onClick={this.closeSideNav}
           />
           <div className="nav-links">
-            <Link to="/login" className="login-btn" onClick={this.closeSideNav}>
-              <Button
-                text={"Sign in"}
-                styles={{
-                  padding: "0.2rem 3rem",
-                }}
-              />
-            </Link>
+            {this.props.user ? (
+              <div>
+                Logged in as:
+                <br />
+                <span style={{ color: "var(--beige-yellow)" }}>
+                  {this.props.user?.username}
+                </span>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="login-btn"
+                onClick={this.closeSideNav}
+              >
+                <Button text={"Sign in"} styles={{ padding: "0.2rem 3rem" }} />
+              </Link>
+            )}
             <Link to="/" onClick={this.closeSideNav}>
               <div className="nav-link">
                 <CiSearch /> Search
@@ -73,6 +101,18 @@ class Navbar extends React.Component {
               </div>
             </Link>
           </div>
+          {this.props.user && (
+            <div className="mobile-logout-btn">
+              <Button
+                clickHandler={this.logout}
+                text={"Log out"}
+                styles={{
+                  padding: "0.2rem 2.5rem",
+                  transition: "all 0.3s ease",
+                }}
+              />
+            </div>
+          )}
         </nav>
         {/* desktop navbar */}
         <nav className="navbar">
@@ -90,14 +130,23 @@ class Navbar extends React.Component {
                 <img src="/icons/account.svg" alt="account" /> Account
               </div>
             </Link>
-            <Link to="/login">
+            {this.props.user ? (
               <Button
-                text={"Sign in"}
+                clickHandler={this.logout}
+                text={"Log out"}
                 styles={{
                   padding: "0.2rem 1.5rem",
+                  transition: "all 0.3s ease",
                 }}
               />
-            </Link>
+            ) : (
+              <Link to="/login">
+                <Button
+                  text={"Sign in"}
+                  styles={{ padding: "0.2rem 1.5rem" }}
+                />
+              </Link>
+            )}
           </div>
         </nav>
       </>
