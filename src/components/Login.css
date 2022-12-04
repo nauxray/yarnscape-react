@@ -4,7 +4,6 @@
 }
 .login-header {
   font-size: 1.75rem;
-  font-weight: 300;
 }
 .login-form {
   width: 90%;
@@ -37,7 +36,6 @@
   opacity: 80%;
 }
 .login-container hr {
-  border: 1px solid #595959;
   width: 80%;
 }
 .login-prompt {
@@ -56,5 +54,8 @@
   .login-form {
     width: 100%;
     margin: 1rem auto;
+  }
+  .login-header {
+    font-size: 1.5rem;
   }
 }

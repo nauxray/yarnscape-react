@@ -127,7 +127,8 @@ class Navbar extends React.Component {
             </Link>
             <Link to="/account">
               <div className="nav-link">
-                <img src="/icons/account.svg" alt="account" /> Account
+                <img src="/icons/account.svg" alt="account" />
+                {this.props.user?.username ?? "Account"}
               </div>
             </Link>
             {this.props.user ? (
