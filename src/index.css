@@ -14,6 +14,10 @@ code {
     monospace;
 }
 
+hr {
+  border: 1px solid #595959;
+}
+
 :root {
   --main-bg: #292929;
   --beige-yellow: #f7d08a;
