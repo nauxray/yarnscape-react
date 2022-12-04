@@ -5,4 +5,5 @@
   width: 100%;
   background-color: var(--main-bg);
   color: white;
+  font-weight: 300;
 }
