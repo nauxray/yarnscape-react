@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import { useState } from "react";
+import Account from "./components/Account";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -30,7 +31,7 @@ function App() {
         />
         <Routes>
           <Route path="/add-yarn" element={<div>add yarn</div>} />
-          <Route path="/account" element={<div>account</div>} />
+          <Route path="/account" element={<Account key={user} user={user} />} />
           <Route
             path="/login"
             element={<Login user={user} setUser={setUser} />}

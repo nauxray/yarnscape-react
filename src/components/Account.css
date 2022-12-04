@@ -1,0 +1,17 @@
+.account-container {
+  width: 90%;
+  margin: 0 auto;
+}
+.account-profile {
+  border: 2px solid white;
+  border-radius: 6px;
+  background-color: var(--dark-grey2);
+  padding: 1rem;
+}
+.heading {
+  font-size: 1.75rem;
+}
+hr {
+  border: 1px solid #595959;
+  width: 90%;
+}
