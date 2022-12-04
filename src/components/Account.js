@@ -1,11 +1,14 @@
 import "./Account.css";
-import Button from "./Button";
+
 import dayjs from "dayjs";
 import React from "react";
 import { toast } from "react-toastify";
+
 import AuthApi from "../utils/api/authApi";
 import { withRouter } from "../utils/withRouter";
+import Button from "./Button";
 import Loader from "./Loader";
+
 class Account extends React.Component {
   constructor(props) {
     super(props);
@@ -61,7 +64,6 @@ class Account extends React.Component {
       this.state.newPassword
     );
     if (res.status === 204) {
-      this.setState({ editProfile: false });
       toast.success("Your changes have been saved!");
       localStorage.removeItem("token");
       this.props.setUser(null);
@@ -71,8 +73,6 @@ class Account extends React.Component {
     }
     this.setState({ loading: false });
   };
-
-  componentDidMount() {}
 
   render() {
     return (
