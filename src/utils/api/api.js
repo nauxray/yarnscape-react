@@ -40,6 +40,16 @@ export default class Api extends ApiClient {
     }
   };
 
+  getYarn = async (id) => {
+    try {
+      const results = await this.init()?.get(`yarns/${id}`);
+      return results.data;
+    } catch (err) {
+      handleError(err);
+      return null;
+    }
+  };
+
   getBrands = async () => {
     try {
       const results = await this.init()?.get("brands");
