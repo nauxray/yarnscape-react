@@ -59,4 +59,40 @@ export default class Api extends ApiClient {
       return null;
     }
   };
+
+  getUser = async (userId) => {
+    try {
+      const results = await this.init()?.get(`users/${userId}`);
+      return results.data;
+    } catch (err) {
+      handleError(err);
+      return err.response;
+    }
+  };
+
+  login = async (username, password) => {
+    try {
+      const token = await this.init()?.post("login", {
+        username,
+        password,
+      });
+      return token.data;
+    } catch (err) {
+      handleError(err);
+      return err.response;
+    }
+  };
+
+  createAcc = async (username, password) => {
+    try {
+      const token = await this.init()?.post("users/create", {
+        username,
+        password,
+      });
+      return token.data;
+    } catch (err) {
+      handleError(err);
+      return err.response;
+    }
+  };
 }
