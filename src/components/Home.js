@@ -98,8 +98,8 @@ export default function Home() {
           >
             <Loader />
           </div>
-        ) : results.length > 0 ? (
-          results.map((item) => <Card key={item._id} yarn={item} />)
+        ) : results?.length > 0 ? (
+          results?.map((item) => <Card key={item._id} yarn={item} />)
         ) : (
           <div style={{ textAlign: "center" }}>
             {Object.keys(searchParams).length > 0 ? "No match found" : ""}
