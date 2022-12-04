@@ -1,38 +1,151 @@
 import "./Account.css";
-
+import Button from "./Button";
 import dayjs from "dayjs";
 import React from "react";
-
+import { toast } from "react-toastify";
+import AuthApi from "../utils/api/authApi";
+import { withRouter } from "../utils/withRouter";
+import Loader from "./Loader";
 class Account extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      //   navOpen: false,
-    };
 
     this.user = this.props.user;
     this.joinedAt = dayjs(this.user?.created_at).format("D MMMM YYYY");
     this.userReviews = this.user?.reviews;
 
-    // this.logout = this.logout.bind(this);
+    this.state = {
+      editProfile: false,
+      newUsername: this.user?.username,
+      newPassword: "",
+      loading: false,
+    };
+
+    this.validate = this.validate.bind(this);
+    this.handleSave = this.handleSave.bind(this);
   }
 
-  componentDidMount() {
-    // console.log(this.user);
-  }
+  validate = () => {
+    if (this.state.newUsername.length === 0) {
+      toast.error("Username must not be empty!");
+      return false;
+    }
+    const usernameRegex = new RegExp(/^[a-z0-9]+$/i);
+    if (!usernameRegex.test(this.state.newUsername)) {
+      toast.error("Username must be alphanumeric!");
+      return false;
+    }
+    // if user did not change anything
+    if (
+      this.state.newUsername === this.user?.username &&
+      this.state.newPassword.length === 0
+    ) {
+      this.setState({ editProfile: false });
+      return false;
+    }
+    return true;
+  };
+
+  handleSave = async () => {
+    if (!this.validate()) {
+      return;
+    }
+
+    this.setState({ loading: true });
+    const editedUsername = this.state.newUsername;
+    const usernameUnchanged = editedUsername === this.user?.username;
+
+    const res = await new AuthApi().editUser(
+      this.user?._id,
+      usernameUnchanged ? "" : editedUsername,
+      this.state.newPassword
+    );
+    if (res.status === 204) {
+      this.setState({ editProfile: false });
+      toast.success("Your changes have been saved!");
+      localStorage.removeItem("token");
+      this.props.setUser(null);
+      this.props.navigate("/login");
+    } else {
+      toast.error("Something went wrong");
+    }
+    this.setState({ loading: false });
+  };
+
+  componentDidMount() {}
 
   render() {
     return (
       <div className="account-container">
         {this.user ? (
           <>
-            <p className="heading">Your Profile</p>
+            <div className="account-profile-header">
+              <p className="heading">Your Profile</p>
+              <button
+                onClick={() => {
+                  this.setState({ editProfile: !this.state.editProfile });
+                }}
+              >
+                <img src="/icons/edit.svg" alt="edit-profile" />
+              </button>
+            </div>
             <div className="account-profile">
-              <div>Username: {this.user?.username}</div>
-              <div>Password: {"*".repeat(8)}</div>
+              <div>
+                Username:{" "}
+                {this.state.editProfile ? (
+                  <input
+                    value={this.state.newUsername}
+                    onChange={(e) =>
+                      this.setState({ newUsername: e.target.value })
+                    }
+                  />
+                ) : (
+                  this.user?.username
+                )}
+              </div>
+              <div>
+                Password:{" "}
+                {this.state.editProfile ? (
+                  <input
+                    value={this.state.newPassword}
+                    onChange={(e) =>
+                      this.setState({ newPassword: e.target.value })
+                    }
+                    placeholder={"(unchanged)"}
+                  />
+                ) : (
+                  "*".repeat(8)
+                )}
+              </div>
               <div>Joined: {this.joinedAt}</div>
             </div>
+            {this.state.editProfile && (
+              <div
+                className="save-btn"
+                style={{ display: "flex", justifyContent: "flex-end" }}
+              >
+                {this.state.loading ? (
+                  <div
+                    style={{
+                      width: "2rem",
+                      height: "2rem",
+                      marginTop: "2rem",
+                    }}
+                  >
+                    <Loader />
+                  </div>
+                ) : (
+                  <Button
+                    clickHandler={this.handleSave}
+                    text={"Save"}
+                    styles={{
+                      padding: "0.2rem 2rem",
+                      marginTop: "2rem",
+                    }}
+                  />
+                )}
+              </div>
+            )}
             <hr />
             <p className="heading">
               Your Past Reviews ({this.userReviews?.length})
@@ -46,10 +159,10 @@ class Account extends React.Component {
             </div>
           </>
         ) : (
-          <div>You are not logged in :(</div>
+          <div className="error">You are not logged in :(</div>
         )}
       </div>
     );
   }
 }
-export default Account;
+export default withRouter(Account);
