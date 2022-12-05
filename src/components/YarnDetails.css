@@ -1,0 +1,84 @@
+.details-container {
+  width: 80%;
+  margin: 0 auto;
+}
+p.details-header {
+  text-align: center;
+  font-size: 1.75rem;
+}
+.details-top {
+  display: flex;
+  margin: 2rem auto;
+  max-width: 60rem;
+}
+.details-image-slideshow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.slideshow-arrow {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.slideshow-arrow:hover {
+  color: var(--beige-yellow);
+}
+.details-image {
+  width: 20rem;
+  height: 20rem;
+  border: 2px solid var(--beige-yellow);
+  border-radius: 6px;
+}
+.slideshow-page {
+  text-align: center;
+  color: var(--beige-yellow);
+}
+.details-rating {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  color: var(--beige-yellow);
+}
+.details-rating > span {
+  padding-top: 3px;
+}
+.details-info {
+  width: 40%;
+  margin: 2rem auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.details-info-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.details-info-row > .tools-info {
+  display: flex;
+  flex-direction: column;
+}
+hr {
+  margin: 2rem auto;
+  width: 80%;
+}
+.details-review-count {
+  text-align: center;
+  font-size: 1.5rem;
+}
+@media only screen and (max-width: 768px) {
+  .details-top {
+    flex-direction: column;
+  }
+  .details-info {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 720px) {
+  .details-container {
+    width: 90%;
+  }
+}

@@ -1,19 +1,108 @@
+import "./YarnDetails.css";
+
 import React, { useEffect, useState } from "react";
+import { SlStar } from "react-icons/sl";
+import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
 import { useParams } from "react-router-dom";
+
 import Api from "../utils/api/api";
+import { parseRating } from "../utils/parseRating";
 
 export default function YarnDetails() {
   const yarnId = useParams().id;
-  const [details, setDetails] = useState(null);
+  const [yarn, setYarn] = useState(null);
+  const [imgIndex, setImgIndex] = useState(0);
 
   const getYarnDetails = async () => {
     const res = await new Api().getYarn(yarnId);
-    setDetails(res);
+    console.log(res);
+    setYarn(res);
   };
 
   useEffect(() => {
     getYarnDetails();
   }, []);
 
-  return <div>{details?.name}</div>;
+  const images = yarn?.img_url;
+
+  const prevImg = () => {
+    setImgIndex(imgIndex - 1 < 0 ? 0 : imgIndex - 1);
+  };
+  const nextImg = () => {
+    setImgIndex(
+      imgIndex + 1 >= images?.length - 1 ? images?.length - 1 : imgIndex + 1
+    );
+  };
+
+  return (
+    <div className="details-container">
+      <p className="details-header">{yarn?.name}</p>
+      <section className="details-top">
+        {yarn?.img_url?.length > 0 && (
+          <div className="details-slideshow-container">
+            <div className="details-image-slideshow">
+              <TfiAngleLeft
+                size={25}
+                onClick={prevImg}
+                className="slideshow-arrow"
+              />
+              <img
+                className="details-image"
+                src={yarn?.img_url[imgIndex]}
+                alt={yarn?.name}
+              />
+              <TfiAngleRight
+                size={25}
+                onClick={nextImg}
+                className="slideshow-arrow"
+              />
+            </div>
+            <p className="slideshow-page">
+              {imgIndex + 1}/{images?.length}
+            </p>
+          </div>
+        )}
+        <section className="details-info">
+          <div className="details-info-row">
+            <img
+              className="details-info-icon"
+              src={"/icons/brand.svg"}
+              alt="brand"
+            />
+            Brand: {yarn?.brand.name}
+          </div>
+          <div className="details-info-row">
+            <img
+              className="details-info-icon"
+              src={"/icons/materials.svg"}
+              alt="materials"
+            />
+            Material:
+          </div>
+          <div
+            className="details-info-row"
+            style={{ alignItems: "flex-start" }}
+          >
+            <img
+              className="details-info-icon"
+              src={"/icons/measurement.svg"}
+              alt="measurement"
+            />
+            <div className="tools-info">
+              <span>Hook: {yarn?.recommended_hook_size}mm</span>
+              <span>Needle: {yarn?.recommended_needle_size}mm</span>
+            </div>
+          </div>
+        </section>
+      </section>
+      <div className="details-rating">
+        <span>{parseRating(yarn?.average_rating)}</span>
+        <SlStar size={25} />
+      </div>
+      <hr />
+      <p className="details-review-count">
+        {yarn?.reviews?.length} review{yarn?.reviews?.length === 1 ? "" : "s"}
+      </p>
+    </div>
+  );
 }
