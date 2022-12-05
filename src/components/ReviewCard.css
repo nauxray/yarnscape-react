@@ -1,0 +1,33 @@
+.review-card {
+  background-color: var(--dark-grey2);
+  border-radius: 4px;
+  padding: 1rem;
+}
+.review-header{
+  display: flex;
+  justify-content: space-between;
+}
+.review-menu-trigger {
+  cursor: pointer;
+  color: white;
+  font-size: 1.3rem;
+  transition: all 0.2s ease;
+}
+.review-menu-trigger:hover {
+  color: var(--beige-yellow);
+}
+.yarn-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--beige-yellow);
+  font-size: 1.25rem;
+}
+.yarn-rating > span {
+  padding-top: 3px;
+}
+.review-rating-date {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+}

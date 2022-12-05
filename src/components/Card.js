@@ -1,6 +1,7 @@
 import React from "react";
 import "./Card.css";
 import { SlStar } from "react-icons/sl";
+import { parseRating } from "../utils/parseRating";
 
 export default function Card({ yarn }) {
   return (
@@ -15,12 +16,7 @@ export default function Card({ yarn }) {
         <div className="card-section">
           <span>{yarn.brand.name}</span>
           <div className="yarn-rating">
-            <span>
-              {parseFloat(yarn.average_rating)
-                .toFixed(1)
-                .replace(/[.,]0$/, "")}
-              /5
-            </span>
+            <span>{parseRating(yarn?.average_rating)}</span>
             <SlStar size={18} />
           </div>
         </div>
