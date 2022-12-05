@@ -105,4 +105,13 @@ export default class Api extends ApiClient {
       return err.response;
     }
   };
+  getReviewsByYarn = async (id) => {
+    try {
+      const res = await this.init()?.get(`reviews/yarn/${id}`);
+      return res.data;
+    } catch (err) {
+      handleError(err);
+      return err.response;
+    }
+  }
 }

@@ -32,7 +32,7 @@ function App() {
         />
         <Routes>
           <Route path="/add-yarn" element={<div>add yarn</div>} />
-          <Route path="/yarn/:id" element={<YarnDetails />} />
+          <Route path="/yarn/:id" element={<YarnDetails user={user} />} />
           <Route
             path="/account"
             element={<Account key={user} user={user} setUser={setUser} />}

@@ -7,16 +7,21 @@ import { useParams } from "react-router-dom";
 
 import Api from "../utils/api/api";
 import { parseRating } from "../utils/parseRating";
+import Button from "./Button";
+import ReviewCard from "./ReviewCard";
 
-export default function YarnDetails() {
+export default function YarnDetails({ user }) {
   const yarnId = useParams().id;
   const [yarn, setYarn] = useState(null);
   const [imgIndex, setImgIndex] = useState(0);
+  const [reviews, setReviews] = useState(null);
 
   const getYarnDetails = async () => {
-    const res = await new Api().getYarn(yarnId);
-    console.log(res);
-    setYarn(res);
+    const api = new Api();
+    const yarnRes = await api.getYarn(yarnId);
+    setYarn(yarnRes);
+    const reviewRes = await api.getReviewsByYarn(yarnId)
+    setReviews(reviewRes)
   };
 
   useEffect(() => {
@@ -101,8 +106,19 @@ export default function YarnDetails() {
       </div>
       <hr />
       <p className="details-review-count">
-        {yarn?.reviews?.length} review{yarn?.reviews?.length === 1 ? "" : "s"}
+        {reviews?.length} review{reviews?.length === 1 ? "" : "s"}
       </p>
+      <div className="reviews-container">
+        {reviews?.map((item) => <ReviewCard key={item._id} review={item} user={user} />)}
+        <Button
+          text={
+            <div className='review-btn-text'>
+              Write a review
+              <img src='/icons/pen.svg' alt='pen' />
+            </div>
+          }
+        />
+      </div>
     </div>
   );
 }
