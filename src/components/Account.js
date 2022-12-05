@@ -69,7 +69,7 @@ class Account extends React.Component {
       this.props.setUser(null);
       this.props.navigate("/login");
     } else {
-      toast.error("Something went wrong");
+      toast.error(res.data ?? "Something went wrong");
     }
     this.setState({ loading: false });
   };

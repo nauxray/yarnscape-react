@@ -43,7 +43,7 @@ export default class AuthApi {
       return res;
     } catch (err) {
       handleError(err);
-      return null;
+      return err.response;
     }
   };
 }
