@@ -70,21 +70,33 @@ hr {
   text-align: center;
   font-size: 1.5rem;
 }
-.reviews-container{
+.reviews-container {
   display: flex;
   flex-direction: column;
   width: 90%;
   margin: 2rem auto 0 auto;
 }
-.reviews-container > button {
+.reviews-container > div  {
+  width: fit-content;
+  align-self: flex-end;
+  margin: 1rem 0;
+}
+.reviews-container > div.review-card  {
+  width: 100%;
+}
+.reviews-container a button {
   padding: 0.3rem 1rem;
   transition: all 0.2s ease;
   width: fit-content;
-  align-self: flex-end;
-  margin: 2rem 0;
 }
-.reviews-container > button:hover {
+.reviews-container a button:hover {
   opacity: 80%;
+}
+.reviews-container a.disabled {
+  pointer-events: none;
+}
+.reviews-container a.disabled button {
+  opacity: 50%;
 }
 .review-btn-text{
   display: flex;

@@ -3,18 +3,23 @@ import "./YarnDetails.css";
 import React, { useEffect, useState } from "react";
 import { SlStar } from "react-icons/sl";
 import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import Api from "../utils/api/api";
 import { parseRating } from "../utils/parseRating";
 import Button from "./Button";
 import ReviewCard from "./ReviewCard";
+import { Tooltip } from "react-tippy";
 
 export default function YarnDetails({ user }) {
   const yarnId = useParams().id;
   const [yarn, setYarn] = useState(null);
   const [imgIndex, setImgIndex] = useState(0);
   const [reviews, setReviews] = useState(null);
+
+  const images = yarn?.img_url;
+  const authorList = reviews?.map((item) => item.author);
+  const userLeftReview = authorList?.includes(user?._id);
 
   const getYarnDetails = async () => {
     const api = new Api();
@@ -27,8 +32,6 @@ export default function YarnDetails({ user }) {
   useEffect(() => {
     getYarnDetails();
   }, []);
-
-  const images = yarn?.img_url;
 
   const prevImg = () => {
     setImgIndex(imgIndex - 1 < 0 ? 0 : imgIndex - 1);
@@ -110,15 +113,23 @@ export default function YarnDetails({ user }) {
       </p>
       <div className="reviews-container">
         {reviews?.map((item) => <ReviewCard key={item._id} review={item} user={user} />)}
-        <Button
-          text={
-            <div className='review-btn-text'>
-              Write a review
-              <img src='/icons/pen.svg' alt='pen' />
-            </div>
-          }
-        />
+        <Tooltip
+          disabled={!!user && !userLeftReview}
+          title={
+            !user ? "Please login to leave a review" : userLeftReview ? "You have already left a review on this yarn!" : ""
+          }>
+          <Link to={`/yarn/${yarnId}/review`} className={!user || userLeftReview ? "disabled" : ""}>
+            <Button
+              text={
+                <div className='review-btn-text'>
+                  Write a review
+                  <img src='/icons/pen.svg' alt='pen' />
+                </div>
+              }
+            />
+          </Link>
+        </Tooltip>
       </div>
-    </div>
+    </div >
   );
 }
