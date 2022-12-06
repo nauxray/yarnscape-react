@@ -39,7 +39,6 @@ export default class Api extends ApiClient {
       return null;
     }
   };
-
   getYarn = async (id) => {
     try {
       const results = await this.init()?.get(`yarns/${id}`);
@@ -49,7 +48,6 @@ export default class Api extends ApiClient {
       return null;
     }
   };
-
   getBrands = async () => {
     try {
       const results = await this.init()?.get("brands");
@@ -59,7 +57,6 @@ export default class Api extends ApiClient {
       return null;
     }
   };
-
   getMaterials = async () => {
     try {
       const results = await this.init()?.get("materials");
@@ -69,17 +66,15 @@ export default class Api extends ApiClient {
       return null;
     }
   };
-
   getUser = async (userId) => {
     try {
       const results = await this.init()?.get(`users/${userId}`);
       return results.data;
     } catch (err) {
       handleError(err);
-      return err.response;
+      return null;
     }
   };
-
   login = async (username, password) => {
     try {
       const token = await this.init()?.post("login", {
@@ -89,10 +84,9 @@ export default class Api extends ApiClient {
       return token.data;
     } catch (err) {
       handleError(err);
-      return err.response;
+      return null;
     }
   };
-
   createAcc = async (username, password) => {
     try {
       const token = await this.init()?.post("users/create", {
@@ -102,7 +96,7 @@ export default class Api extends ApiClient {
       return token.data;
     } catch (err) {
       handleError(err);
-      return err.response;
+      return null;
     }
   };
   getReview = async (id) => {
@@ -111,7 +105,7 @@ export default class Api extends ApiClient {
       return res.data;
     } catch (err) {
       handleError(err);
-      return err.response;
+      return null;
     }
   };
   getReviewsByYarn = async (id) => {
@@ -120,7 +114,7 @@ export default class Api extends ApiClient {
       return res.data;
     } catch (err) {
       handleError(err);
-      return err.response;
+      return null;
     }
   };
 }
