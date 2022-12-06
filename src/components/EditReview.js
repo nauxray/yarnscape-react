@@ -11,7 +11,7 @@ import AuthApi from "../utils/api/authApi";
 import Button from "./Button";
 import Loader from "./Loader";
 
-export default function EditReview() {
+export default function EditReview({ logout }) {
   const { yarnId, reviewId } = useParams();
   const navigate = useNavigate();
 
@@ -64,6 +64,10 @@ export default function EditReview() {
     if (res.status === 204) {
       toast.success("Review successfully edited!");
       navigate(`/yarn/${yarnId}`);
+    } else if (res.status === 403) {
+      toast.error("Please login again");
+      logout();
+      navigate("/login");
     } else {
       toast.error("Something went wrong");
     }

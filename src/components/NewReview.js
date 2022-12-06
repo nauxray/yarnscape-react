@@ -11,7 +11,7 @@ import AuthApi from "../utils/api/authApi";
 import Button from "./Button";
 import Loader from "./Loader";
 
-export default function NewReview() {
+export default function NewReview({ logout }) {
   const yarnId = useParams().id;
   const navigate = useNavigate();
 
@@ -54,6 +54,10 @@ export default function NewReview() {
     if (res.status === 201) {
       toast.success("Review successfully created!");
       navigate(`/yarn/${yarnId}`);
+    } else if (res.status === 403) {
+      toast.error("Please login again");
+      logout();
+      navigate("/login");
     } else {
       toast.error("Something went wrong");
     }

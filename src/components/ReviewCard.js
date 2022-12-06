@@ -14,6 +14,7 @@ export default function ReviewCard({
   user,
   isProfile,
   refreshReviews,
+  logout,
 }) {
   const [author, setAuthor] = useState(null);
   const [yarn, setYarn] = useState(null);
@@ -72,6 +73,7 @@ export default function ReviewCard({
                   yarnId={review?.yarn}
                   reviewId={review._id}
                   refreshReviews={refreshReviews}
+                  logout={logout}
                 />
               </>
             )}

@@ -11,7 +11,7 @@ import Button from "./Button";
 import ReviewCard from "./ReviewCard";
 import { Tooltip } from "react-tippy";
 
-export default function YarnDetails({ user }) {
+export default function YarnDetails({ user, logout }) {
   const yarnId = useParams().id;
   const [yarn, setYarn] = useState(null);
   const [imgIndex, setImgIndex] = useState(0);
@@ -121,6 +121,7 @@ export default function YarnDetails({ user }) {
             key={item._id}
             review={item}
             user={user}
+            logout={logout}
             refreshReviews={getReviewDetails}
           />
         ))}

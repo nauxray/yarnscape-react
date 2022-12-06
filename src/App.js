@@ -3,7 +3,7 @@ import "react-tippy/dist/tippy.css";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import Account from "./components/Account";
@@ -17,10 +17,15 @@ import EditReview from "./components/EditReview";
 function App() {
   const [user, setUser] = useState(null);
 
+  const logout = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+  };
+
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar key={user} user={user} setUser={setUser} />
+        <Navbar key={user} user={user} setUser={setUser} logout={logout} />
         <ToastContainer
           position="bottom-right"
           autoClose={3000}
@@ -34,15 +39,21 @@ function App() {
         />
         <Routes>
           <Route path="/add-yarn" element={<div>add yarn</div>} />
-          <Route path="/yarn/:id" element={<YarnDetails user={user} />} />
-          <Route path="/yarn/:id/review" element={<NewReview />} />
+          <Route
+            path="/yarn/:id"
+            element={<YarnDetails user={user} logout={logout} />}
+          />
+          <Route
+            path="/yarn/:id/review"
+            element={<NewReview logout={logout} />}
+          />
           <Route
             path="/yarn/:yarnId/review/:reviewId/edit"
-            element={<EditReview />}
+            element={<EditReview logout={logout} />}
           />
           <Route
             path="/account"
-            element={<Account key={user} user={user} setUser={setUser} />}
+            element={<Account key={user} user={user} logout={logout} />}
           />
           <Route
             path="/login"

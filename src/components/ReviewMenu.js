@@ -16,6 +16,7 @@ export default function ReviewMenu({
   yarnId,
   reviewId,
   refreshReviews,
+  logout,
 }) {
   const navigate = useNavigate();
   const { isShowing, toggle } = useModal();
@@ -26,6 +27,10 @@ export default function ReviewMenu({
     if (res.status === 204) {
       refreshReviews();
       toast.success("Review successfully deleted!");
+    } else if (res.status === 403) {
+      toast.error("Please login again");
+      logout();
+      navigate("/login");
     } else {
       toast.error("Something went wrong");
     }

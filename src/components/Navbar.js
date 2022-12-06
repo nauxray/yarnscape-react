@@ -19,7 +19,6 @@ class Navbar extends React.Component {
 
     this.openSideNav = this.openSideNav.bind(this);
     this.closeSideNav = this.closeSideNav.bind(this);
-    this.logout = this.logout.bind(this);
   }
 
   openSideNav = () => this.setState({ navOpen: true });
@@ -30,11 +29,6 @@ class Navbar extends React.Component {
     const userId = JSON.parse(atob(tokens[1])).userId;
     const user = await new Api()?.getUser(userId);
     this.props.setUser(user);
-  };
-
-  logout = () => {
-    localStorage.removeItem("token");
-    this.props.setUser(null);
   };
 
   componentDidMount() {
@@ -133,7 +127,7 @@ class Navbar extends React.Component {
             </Link>
             {this.props.user ? (
               <Button
-                clickHandler={this.logout}
+                clickHandler={this.props.logout}
                 text={"Log out"}
                 styles={{
                   padding: "0.2rem 1.5rem",
