@@ -36,7 +36,9 @@ export default class AuthApi {
 
   editUser = async (userId, username, password) => {
     try {
-      const res = await this.init()?.put(`users/${userId}`, {
+      const client = this.init();
+      if (!client) return { status: 403 };
+      const res = await client?.put(`users/${userId}`, {
         username,
         password,
       });
@@ -48,7 +50,9 @@ export default class AuthApi {
   };
   postReview = async (yarnId, content, rating, imgUrl) => {
     try {
-      const res = await this.init()?.post(`reviews/${yarnId}`, {
+      const client = this.init();
+      if (!client) return { status: 403 };
+      const res = await client?.post(`reviews/${yarnId}`, {
         content,
         rating,
         img_url: imgUrl,
@@ -61,7 +65,9 @@ export default class AuthApi {
   };
   editReview = async (id, content, rating, imgUrl) => {
     try {
-      const res = await this.init()?.put(`reviews/${id}`, {
+      const client = this.init();
+      if (!client) return { status: 403 };
+      const res = await client?.put(`reviews/${id}`, {
         content,
         rating,
         img_url: imgUrl,
@@ -74,7 +80,9 @@ export default class AuthApi {
   };
   deleteReview = async (id) => {
     try {
-      const res = await this.init()?.delete(`reviews/${id}`);
+      const client = this.init();
+      if (!client) return { status: 403 };
+      const res = await client?.delete(`reviews/${id}`);
       return res;
     } catch (err) {
       handleError(err);
