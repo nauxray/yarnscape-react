@@ -14,6 +14,9 @@ section.criteria > span {
   margin-right: 0.2rem;
   font-size: 1.25rem;
 }
+section.criteria > div[data-tooltipped] {
+  height: 20px;
+}
 section.criteria .info {
   cursor: pointer;
   transition: all 0.2s ease;

@@ -1,7 +1,6 @@
 .review-card {
   box-sizing: border-box;
-  width: 100% !important;
-  margin: 0 !important;
+  width: 100%;
   background-color: var(--dark-grey2);
   border-radius: 4px;
   padding: 1rem;
