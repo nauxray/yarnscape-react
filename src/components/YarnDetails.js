@@ -1,15 +1,16 @@
 import "./YarnDetails.css";
 
 import React, { useEffect, useState } from "react";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 import { SlStar } from "react-icons/sl";
 import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
 import { Link, useParams } from "react-router-dom";
+import { Tooltip } from "react-tippy";
 
 import Api from "../utils/api/api";
 import { parseRating } from "../utils/parseRating";
 import Button from "./Button";
 import ReviewCard from "./ReviewCard";
-import { Tooltip } from "react-tippy";
 
 export default function YarnDetails({ user, logout }) {
   const yarnId = useParams().id;
@@ -82,6 +83,15 @@ export default function YarnDetails({ user, logout }) {
               alt="brand"
             />
             Brand: {yarn?.brand.name}
+            {yarn?.brand.description.length > 0 && (
+              <Tooltip
+                title={yarn.brand.description}
+                position="top"
+                hideOnClick={false}
+              >
+                <AiOutlineInfoCircle className="info" size={20} />
+              </Tooltip>
+            )}
           </div>
           <div className="details-info-row">
             <img
