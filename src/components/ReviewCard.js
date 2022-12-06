@@ -6,11 +6,15 @@ import { SlStar } from "react-icons/sl";
 
 import Api from "../utils/api/api";
 import { parseRating, parseTime } from "../utils/parseRating";
+import Loader from "./Loader";
+import ReviewMenu from "./ReviewMenu";
 
 export default function ReviewCard({ review, user, isProfile }) {
   const [author, setAuthor] = useState(null);
   const [yarn, setYarn] = useState(null);
+  const [showMenu, setShowMenu] = useState(false);
   const [loading, setLoading] = useState(false);
+
   const api = new Api();
 
   const isOwnReview = !!user && author?._id === user?._id;
@@ -36,29 +40,57 @@ export default function ReviewCard({ review, user, isProfile }) {
 
   const reviewContent = (
     <div className="review-card">
-      <div className="review-header">
-        <span>{author?.username}:</span>
-        {isOwnReview && <RxDotsHorizontal className="review-menu-trigger" />}
-      </div>
-      <div className="review-rating-date">
-        <div className="yarn-rating">
-          <span>{parseRating(review.rating)}</span>
-          <SlStar size={22} />
+      {loading ? (
+        <div
+          style={{
+            width: "2rem",
+            height: "2rem",
+            margin: "1rem auto",
+          }}
+        >
+          <Loader />
         </div>
-        <span>Reviewed {parseTime(review.created_at)}</span>
-      </div>
-      <p>{review.content}</p>
-      <div className="review-image-container">
-        {review.img_url?.map((item, index) => {
-          return (
-            <div key={index} className="review-image">
-              <img src={item} alt={item} />
+      ) : (
+        <>
+          <div className="review-header">
+            <span>{author?.username}:</span>
+            {isOwnReview && (
+              <>
+                <RxDotsHorizontal
+                  className="review-menu-trigger"
+                  onClick={() => setShowMenu(!showMenu)}
+                />
+                <ReviewMenu
+                  showMenu={showMenu}
+                  hideMenu={() => setShowMenu(false)}
+                  yarnId={review?.yarn}
+                  reviewId={review._id}
+                />
+              </>
+            )}
+          </div>
+          <div className="review-rating-date">
+            <div className="yarn-rating">
+              <span>{parseRating(review.rating)}</span>
+              <SlStar size={22} />
             </div>
-          );
-        })}
-      </div>
+            <span>Reviewed {parseTime(review.created_at)}</span>
+          </div>
+          <p>{review.content}</p>
+          <div className="review-image-container">
+            {review.img_url?.map((item, index) => {
+              return (
+                <div key={index} className="review-image">
+                  <img src={item} alt={item} />
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
     </div>
   );
+
   return isProfile ? (
     <details className="review-card">
       <summary>{yarn?.name}</summary>
