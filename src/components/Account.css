@@ -20,7 +20,7 @@
 .save-btn > button:hover {
   opacity: 80%;
 }
-.account-profile-header img {
+.account-profile-header svg {
   width: 2rem;
   height: 2rem;
 }

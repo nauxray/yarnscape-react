@@ -8,6 +8,7 @@ import useModal from "../hooks/useModal";
 import AuthApi from "../utils/api/authApi";
 import Button from "./Button";
 import Modal from "./Modal";
+import Edit from "./Icons/Edit";
 
 export default function ReviewMenu({
   showMenu,
@@ -45,7 +46,7 @@ export default function ReviewMenu({
             navigate(`/yarn/${yarnId}/review/${reviewId}/edit`);
           }}
         >
-          <img src="/icons/edit.svg" alt="edit" />
+          <Edit />
           Edit
         </li>
         <li
