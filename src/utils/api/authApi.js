@@ -46,7 +46,6 @@ export default class AuthApi {
       return err.response;
     }
   };
-
   postReview = async (yarnId, content, rating, imgUrl) => {
     try {
       const res = await this.init()?.post(`reviews/${yarnId}`, {
@@ -54,6 +53,28 @@ export default class AuthApi {
         rating,
         img_url: imgUrl,
       });
+      return res;
+    } catch (err) {
+      handleError(err);
+      return err.response;
+    }
+  };
+  editReview = async (id, content, rating, imgUrl) => {
+    try {
+      const res = await this.init()?.put(`reviews/${id}`, {
+        content,
+        rating,
+        img_url: imgUrl,
+      });
+      return res;
+    } catch (err) {
+      handleError(err);
+      return err.response;
+    }
+  };
+  deleteReview = async (id) => {
+    try {
+      const res = await this.init()?.delete(`reviews/${id}`);
       return res;
     } catch (err) {
       handleError(err);
