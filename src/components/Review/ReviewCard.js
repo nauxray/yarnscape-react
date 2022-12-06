@@ -3,12 +3,12 @@ import "./ReviewCard.css";
 import React, { useEffect, useState } from "react";
 import { RxCaretDown, RxDotsHorizontal } from "react-icons/rx";
 import { SlStar } from "react-icons/sl";
-
-import Api from "../utils/api/api";
-import { parseRating, parseTime } from "../utils/parseRating";
-import Loader from "./Loader";
-import ReviewMenu from "./ReviewMenu";
 import { Link } from "react-router-dom";
+
+import Api from "../../utils/api/api";
+import { parseRating, parseTime } from "../../utils/parseRating";
+import Loader from "../Common/Loader";
+import ReviewMenu from "./ReviewMenu";
 
 export default function ReviewCard({
   review,

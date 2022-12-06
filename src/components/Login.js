@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
-import Button from "./Button";
-import Loader from "./Loader";
+import Button from "./Common/Button";
+import Loader from "./Common/Loader";
 import { toast } from "react-toastify";
 import Api from "../utils/api/api";
 import { useNavigate } from "react-router-dom";

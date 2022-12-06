@@ -3,14 +3,14 @@ import "./Account.css";
 import React from "react";
 import { toast } from "react-toastify";
 
-import AuthApi from "../utils/api/authApi";
-import { parseTime } from "../utils/parseRating";
-import { withRouter } from "../utils/withRouter";
-import Button from "./Button";
-import Edit from "./Icons/Edit";
-import Loader from "./Loader";
-import ReviewCard from "./ReviewCard";
-import Api from "../utils/api/api";
+import Api from "../../utils/api/api";
+import AuthApi from "../../utils/api/authApi";
+import { parseTime } from "../../utils/parseRating";
+import { withRouter } from "../../utils/withRouter";
+import Button from "../Common/Button";
+import Loader from "../Common/Loader";
+import Edit from "../Icons/Edit";
+import ReviewCard from "../Review/ReviewCard";
 
 class Account extends React.Component {
   constructor(props) {
