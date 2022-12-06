@@ -25,8 +25,8 @@ export default function YarnDetails({ user }) {
     const api = new Api();
     const yarnRes = await api.getYarn(yarnId);
     setYarn(yarnRes);
-    const reviewRes = await api.getReviewsByYarn(yarnId)
-    setReviews(reviewRes)
+    const reviewRes = await api.getReviewsByYarn(yarnId);
+    setReviews(reviewRes);
   };
 
   useEffect(() => {
@@ -112,24 +112,34 @@ export default function YarnDetails({ user }) {
         {reviews?.length} review{reviews?.length === 1 ? "" : "s"}
       </p>
       <div className="reviews-container">
-        {reviews?.map((item) => <ReviewCard key={item._id} review={item} user={user} />)}
+        {reviews?.map((item) => (
+          <ReviewCard key={item._id} review={item} user={user} />
+        ))}
         <Tooltip
           disabled={!!user && !userLeftReview}
           title={
-            !user ? "Please login to leave a review" : userLeftReview ? "You have already left a review on this yarn!" : ""
-          }>
-          <Link to={`/yarn/${yarnId}/review`} className={!user || userLeftReview ? "disabled" : ""}>
+            !user
+              ? "Please login to leave a review"
+              : userLeftReview
+              ? "You have already left a review on this yarn!"
+              : ""
+          }
+        >
+          <Link
+            to={`/yarn/${yarnId}/review`}
+            className={!user || userLeftReview ? "disabled" : ""}
+          >
             <Button
               text={
-                <div className='review-btn-text'>
+                <div className="review-btn-text">
                   Write a review
-                  <img src='/icons/pen.svg' alt='pen' />
+                  <img src="/icons/pen.svg" alt="pen" />
                 </div>
               }
             />
           </Link>
         </Tooltip>
       </div>
-    </div >
+    </div>
   );
 }
