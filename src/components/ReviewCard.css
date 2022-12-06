@@ -7,6 +7,7 @@
   padding: 1rem;
 }
 .review-card > .review-header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   font-size: 1.3rem;

@@ -21,16 +21,20 @@ export default function YarnDetails({ user }) {
   const authorList = reviews?.map((item) => item.author);
   const userLeftReview = authorList?.includes(user?._id);
 
-  const getYarnDetails = async () => {
-    const api = new Api();
-    const yarnRes = await api.getYarn(yarnId);
-    setYarn(yarnRes);
+  const api = new Api();
+  const getReviewDetails = async () => {
     const reviewRes = await api.getReviewsByYarn(yarnId);
     setReviews(reviewRes);
   };
 
+  const getYarnDetails = async () => {
+    const yarnRes = await api.getYarn(yarnId);
+    setYarn(yarnRes);
+  };
+
   useEffect(() => {
     getYarnDetails();
+    getReviewDetails();
   }, []);
 
   const prevImg = () => {
@@ -113,7 +117,12 @@ export default function YarnDetails({ user }) {
       </p>
       <div className="reviews-container">
         {reviews?.map((item) => (
-          <ReviewCard key={item._id} review={item} user={user} />
+          <ReviewCard
+            key={item._id}
+            review={item}
+            user={user}
+            refreshReviews={getReviewDetails}
+          />
         ))}
         <Tooltip
           disabled={!!user && !userLeftReview}

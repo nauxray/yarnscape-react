@@ -11,25 +11,35 @@ import AuthApi from "../utils/api/authApi";
 import Button from "./Button";
 import Loader from "./Loader";
 
-export default function NewReview() {
-  const yarnId = useParams().id;
+export default function EditReview() {
+  const { yarnId, reviewId } = useParams();
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
   const [yarn, setYarn] = useState(null);
+  const [review, setReview] = useState(null);
+
   const [rating, setRating] = useState(1);
   const [content, setContent] = useState("");
   const [imgs, setImgs] = useState([""]);
 
-  const getYarnDetails = async () => {
+  const getYarnAndReview = async () => {
     const api = new Api();
     const yarnRes = await api.getYarn(yarnId);
     setYarn(yarnRes);
+    const reviewRes = await api.getReview(reviewId);
+    setReview(reviewRes);
   };
 
   useEffect(() => {
-    getYarnDetails();
+    getYarnAndReview();
   }, []);
+
+  useEffect(() => {
+    setRating(review?.rating);
+    setContent(review?.content);
+    setImgs(review?.img_url.length > 0 ? review?.img_url : [""]);
+  }, [review]);
 
   const validate = () => {
     if (content.trim().length === 0) {
@@ -50,9 +60,9 @@ export default function NewReview() {
     const api = new AuthApi();
     const filteredImgs = [...imgs].filter((entry) => entry.length > 0);
 
-    const res = await api.postReview(yarnId, content, rating, filteredImgs);
-    if (res.status === 201) {
-      toast.success("Review successfully created!");
+    const res = await api.editReview(reviewId, content, rating, filteredImgs);
+    if (res.status === 204) {
+      toast.success("Review successfully edited!");
       navigate(`/yarn/${yarnId}`);
     } else {
       toast.error("Something went wrong");
@@ -62,7 +72,7 @@ export default function NewReview() {
 
   return (
     <div className="new-review-container">
-      <span className="review-header">Reviewing:</span>
+      <span className="review-header">Editing:</span>
       <p className="review-header review-yarn-name">{yarn?.name}</p>
       <div className="review-form">
         <div className="review-rating">
@@ -91,7 +101,7 @@ export default function NewReview() {
         <div className="review-images">
           <span className="form-label">Image URL(s)</span>
           <div className="review-images-inputs">
-            {imgs.map((item, index) => (
+            {imgs?.map((item, index) => (
               <div className="review-img-input" key={index}>
                 <IoIosAddCircleOutline onClick={() => setImgs([...imgs, ""])} />
                 <input

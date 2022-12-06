@@ -105,6 +105,15 @@ export default class Api extends ApiClient {
       return err.response;
     }
   };
+  getReview = async (id) => {
+    try {
+      const res = await this.init()?.get(`reviews/${id}`);
+      return res.data;
+    } catch (err) {
+      handleError(err);
+      return err.response;
+    }
+  };
   getReviewsByYarn = async (id) => {
     try {
       const res = await this.init()?.get(`reviews/yarn/${id}`);
@@ -113,5 +122,5 @@ export default class Api extends ApiClient {
       handleError(err);
       return err.response;
     }
-  }
+  };
 }
