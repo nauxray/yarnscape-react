@@ -8,6 +8,7 @@ import Api from "../utils/api/api";
 import { parseRating, parseTime } from "../utils/parseRating";
 import Loader from "./Loader";
 import ReviewMenu from "./ReviewMenu";
+import { Link } from "react-router-dom";
 
 export default function ReviewCard({
   review,
@@ -83,6 +84,11 @@ export default function ReviewCard({
               <SlStar size={22} />
             </div>
             <span>Reviewed {parseTime(review.created_at)}</span>
+            {isProfile && (
+              <Link to={`/yarn/${review.yarn}`} className="review-yarn-link">
+                View Yarn
+              </Link>
+            )}
           </div>
           <p className="review-content">{review.content}</p>
           <div className="review-image-container">
