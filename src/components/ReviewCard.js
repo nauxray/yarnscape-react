@@ -5,7 +5,7 @@ import { RxDotsHorizontal } from "react-icons/rx";
 import { SlStar } from "react-icons/sl";
 
 import Api from "../utils/api/api";
-import { parseRating } from "../utils/parseRating";
+import { parseRating, parseTime } from "../utils/parseRating";
 
 export default function ReviewCard({ review, user, isProfile }) {
   const [author, setAuthor] = useState(null);
@@ -36,28 +36,26 @@ export default function ReviewCard({ review, user, isProfile }) {
 
   const reviewContent = (
     <div className="review-card">
-      <div className='review-header'>
+      <div className="review-header">
         <span>{author?.username}:</span>
-        {isOwnReview && <RxDotsHorizontal className='review-menu-trigger' />}
+        {isOwnReview && <RxDotsHorizontal className="review-menu-trigger" />}
       </div>
-      <div className='review-rating-date'>
+      <div className="review-rating-date">
         <div className="yarn-rating">
           <span>{parseRating(review.rating)}</span>
           <SlStar size={22} />
         </div>
-        <span>Reviewed this date this date</span>
+        <span>Reviewed {parseTime(review.created_at)}</span>
       </div>
       <p>{review.content}</p>
-      <div>
-        {
-          review.img_url?.map((item, index) => {
-            // const imagesCount = review.img_url?.length;
-            return <div key={index}>
+      <div className="review-image-container">
+        {review.img_url?.map((item, index) => {
+          return (
+            <div key={index} className="review-image">
               <img src={item} alt={item} />
             </div>
-
-          })
-        }
+          );
+        })}
       </div>
     </div>
   );
@@ -66,5 +64,7 @@ export default function ReviewCard({ review, user, isProfile }) {
       <summary>{yarn?.name}</summary>
       {reviewContent}
     </details>
-  ) : reviewContent;
+  ) : (
+    reviewContent
+  );
 }
