@@ -66,8 +66,11 @@ class Account extends React.Component {
     );
     if (res.status === 204) {
       toast.success("Your changes have been saved!");
-      localStorage.removeItem("token");
-      this.props.setUser(null);
+      this.props.logout();
+      this.props.navigate("/login");
+    } else if (res.status === 403) {
+      toast.error("Please login again");
+      this.props.logout();
       this.props.navigate("/login");
     } else {
       toast.error(res.data ?? "Something went wrong");
