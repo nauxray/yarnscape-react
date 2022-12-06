@@ -8,6 +8,7 @@ import { withRouter } from "../utils/withRouter";
 import Button from "./Button";
 import Loader from "./Loader";
 import { parseTime } from "../utils/parseRating";
+import Edit from "./Icons/Edit";
 
 class Account extends React.Component {
   constructor(props) {
@@ -86,7 +87,7 @@ class Account extends React.Component {
                   this.setState({ editProfile: !this.state.editProfile });
                 }}
               >
-                <img src="/icons/edit.svg" alt="edit-profile" />
+                <Edit color={"var(--beige-yellow)"} />
               </button>
             </div>
             <div className="account-profile">

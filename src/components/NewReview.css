@@ -73,3 +73,11 @@ textarea {
 .review-form button:hover {
   opacity: 80%;
 }
+@media only screen and (max-width: 720px) {
+  .review-form {
+    width: 100%;
+  }
+  .review-images {
+    flex-direction: column;
+  }
+}
