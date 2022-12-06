@@ -19,6 +19,7 @@ export default function ReviewCard({
   const [yarn, setYarn] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [imgs, setImgs] = useState(review?.img_url);
 
   const api = new Api();
 
@@ -84,10 +85,18 @@ export default function ReviewCard({
           </div>
           <p>{review.content}</p>
           <div className="review-image-container">
-            {review.img_url?.map((item, index) => {
+            {imgs?.map((item, index) => {
               return (
                 <div key={index} className="review-image">
-                  <img src={item} alt={item} />
+                  <img
+                    src={item}
+                    alt={item}
+                    onError={() => {
+                      const newImgs = [...imgs];
+                      newImgs.splice(index, 1);
+                      setImgs(newImgs);
+                    }}
+                  />
                 </div>
               );
             })}
