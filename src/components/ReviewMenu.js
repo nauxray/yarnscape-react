@@ -9,7 +9,13 @@ import AuthApi from "../utils/api/authApi";
 import Button from "./Button";
 import Modal from "./Modal";
 
-export default function ReviewMenu({ showMenu, hideMenu, yarnId, reviewId }) {
+export default function ReviewMenu({
+  showMenu,
+  hideMenu,
+  yarnId,
+  reviewId,
+  refreshReviews,
+}) {
   const navigate = useNavigate();
   const { isShowing, toggle } = useModal();
 
@@ -17,8 +23,8 @@ export default function ReviewMenu({ showMenu, hideMenu, yarnId, reviewId }) {
     const api = new AuthApi();
     const res = await api.deleteReview(reviewId);
     if (res.status === 204) {
+      refreshReviews();
       toast.success("Review successfully deleted!");
-      window.location.reload();
     } else {
       toast.error("Something went wrong");
     }

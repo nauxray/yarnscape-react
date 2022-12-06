@@ -9,7 +9,12 @@ import { parseRating, parseTime } from "../utils/parseRating";
 import Loader from "./Loader";
 import ReviewMenu from "./ReviewMenu";
 
-export default function ReviewCard({ review, user, isProfile }) {
+export default function ReviewCard({
+  review,
+  user,
+  isProfile,
+  refreshReviews,
+}) {
   const [author, setAuthor] = useState(null);
   const [yarn, setYarn] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
@@ -65,6 +70,7 @@ export default function ReviewCard({ review, user, isProfile }) {
                   hideMenu={() => setShowMenu(false)}
                   yarnId={review?.yarn}
                   reviewId={review._id}
+                  refreshReviews={refreshReviews}
                 />
               </>
             )}
