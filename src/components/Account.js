@@ -4,11 +4,13 @@ import React from "react";
 import { toast } from "react-toastify";
 
 import AuthApi from "../utils/api/authApi";
+import { parseTime } from "../utils/parseRating";
 import { withRouter } from "../utils/withRouter";
 import Button from "./Button";
-import Loader from "./Loader";
-import { parseTime } from "../utils/parseRating";
 import Edit from "./Icons/Edit";
+import Loader from "./Loader";
+import ReviewCard from "./ReviewCard";
+import Api from "../utils/api/api";
 
 class Account extends React.Component {
   constructor(props) {
@@ -16,17 +18,18 @@ class Account extends React.Component {
 
     this.user = this.props.user;
     this.joinedAt = parseTime(this.user?.created_at);
-    this.userReviews = this.user?.reviews;
 
     this.state = {
       editProfile: false,
       newUsername: this.user?.username,
       newPassword: "",
       loading: false,
+      userReviews: [],
     };
 
     this.validate = this.validate.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.fetchReviews = this.fetchReviews.bind(this);
   }
 
   validate = () => {
@@ -51,9 +54,7 @@ class Account extends React.Component {
   };
 
   handleSave = async () => {
-    if (!this.validate()) {
-      return;
-    }
+    if (!this.validate()) return;
 
     this.setState({ loading: true });
     const editedUsername = this.state.newUsername;
@@ -77,6 +78,15 @@ class Account extends React.Component {
     }
     this.setState({ loading: false });
   };
+
+  fetchReviews = async () => {
+    const res = await new Api().getReviewsByUser(this.user?._id);
+    this.setState({ userReviews: res });
+  };
+
+  componentDidMount() {
+    !!this.user && this.fetchReviews();
+  }
 
   render() {
     return (
@@ -152,11 +162,22 @@ class Account extends React.Component {
             )}
             <hr />
             <p className="heading">
-              Your Past Reviews ({this.userReviews?.length})
+              Your Past Reviews ({this.state.userReviews?.length})
             </p>
             <div className="account-reviews">
-              {this.userReviews?.length > 0 ? (
-                <div>test</div>
+              {this.state.userReviews?.length > 0 ? (
+                this.state.userReviews.map((item) => {
+                  return (
+                    <ReviewCard
+                      key={item._id}
+                      review={item}
+                      user={this.user}
+                      isProfile
+                      refreshReviews={this.fetchReviews}
+                      logout={this.props.logout}
+                    />
+                  );
+                })
               ) : (
                 <div>You haven't left any reviews!</div>
               )}

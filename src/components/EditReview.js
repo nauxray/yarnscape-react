@@ -76,7 +76,7 @@ export default function EditReview({ logout }) {
 
   return (
     <div className="new-review-container">
-      <span className="review-header">Editing:</span>
+      <span className="review-header">Editing review for:</span>
       <p className="review-header review-yarn-name">{yarn?.name}</p>
       <div className="review-form">
         <div className="review-rating">

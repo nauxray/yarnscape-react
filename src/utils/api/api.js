@@ -117,4 +117,13 @@ export default class Api extends ApiClient {
       return null;
     }
   };
+  getReviewsByUser = async (id) => {
+    try {
+      const res = await this.init()?.get(`reviews/user/${id}`);
+      return res.data;
+    } catch (err) {
+      handleError(err);
+      return null;
+    }
+  };
 }

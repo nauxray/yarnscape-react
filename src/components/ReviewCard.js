@@ -1,7 +1,7 @@
 import "./ReviewCard.css";
 
 import React, { useEffect, useState } from "react";
-import { RxDotsHorizontal } from "react-icons/rx";
+import { RxCaretDown, RxDotsHorizontal } from "react-icons/rx";
 import { SlStar } from "react-icons/sl";
 
 import Api from "../utils/api/api";
@@ -23,12 +23,11 @@ export default function ReviewCard({
   const [imgs, setImgs] = useState(review?.img_url);
 
   const api = new Api();
-
   const isOwnReview = !!user && author?._id === user?._id;
 
   const getAuthor = async () => {
     setLoading(true);
-    const res = await api.getUser(review.author);
+    const res = await api.getUser(review.author ?? user?._id);
     setAuthor(res);
     setLoading(false);
   };
@@ -42,7 +41,7 @@ export default function ReviewCard({
 
   useEffect(() => {
     getAuthor();
-    if (isProfile && !!review.yarn) getYarn();
+    if (isProfile) getYarn();
   }, []);
 
   const reviewContent = (
@@ -85,7 +84,7 @@ export default function ReviewCard({
             </div>
             <span>Reviewed {parseTime(review.created_at)}</span>
           </div>
-          <p>{review.content}</p>
+          <p className="review-content">{review.content}</p>
           <div className="review-image-container">
             {imgs?.map((item, index) => {
               return (
@@ -109,8 +108,10 @@ export default function ReviewCard({
   );
 
   return isProfile ? (
-    <details className="review-card">
-      <summary>{yarn?.name}</summary>
+    <details className="review-card" open>
+      <summary>
+        {yarn?.name} <RxCaretDown size={25} />
+      </summary>
       {reviewContent}
     </details>
   ) : (
