@@ -1,6 +1,5 @@
 import "./Account.css";
 
-import dayjs from "dayjs";
 import React from "react";
 import { toast } from "react-toastify";
 
@@ -8,13 +7,14 @@ import AuthApi from "../utils/api/authApi";
 import { withRouter } from "../utils/withRouter";
 import Button from "./Button";
 import Loader from "./Loader";
+import { parseTime } from "../utils/parseRating";
 
 class Account extends React.Component {
   constructor(props) {
     super(props);
 
     this.user = this.props.user;
-    this.joinedAt = dayjs(this.user?.created_at).format("D MMMM YYYY");
+    this.joinedAt = parseTime(this.user?.created_at);
     this.userReviews = this.user?.reviews;
 
     this.state = {

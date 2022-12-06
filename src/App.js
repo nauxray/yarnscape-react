@@ -11,6 +11,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import YarnDetails from "./components/YarnDetails";
+import NewReview from "./components/NewReview";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           <Route path="/add-yarn" element={<div>add yarn</div>} />
           <Route path="/yarn/:id" element={<YarnDetails user={user} />} />
+          <Route path="/yarn/:id/review" element={<NewReview user={user} />} />
           <Route
             path="/account"
             element={<Account key={user} user={user} setUser={setUser} />}
