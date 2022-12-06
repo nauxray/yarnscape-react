@@ -4,11 +4,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import useModal from "../hooks/useModal";
-import AuthApi from "../utils/api/authApi";
-import Button from "./Button";
-import Modal from "./Modal";
-import Edit from "./Icons/Edit";
+import useModal from "../../hooks/useModal";
+import AuthApi from "../../utils/api/authApi";
+import Button from "../Common/Button";
+import Modal from "../Modal/Modal";
+import Edit from "../Icons/Edit";
 
 export default function ReviewMenu({
   showMenu,

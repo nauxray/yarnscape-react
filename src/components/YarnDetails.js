@@ -9,8 +9,8 @@ import { Tooltip } from "react-tippy";
 
 import Api from "../utils/api/api";
 import { parseRating } from "../utils/parseRating";
-import Button from "./Button";
-import ReviewCard from "./ReviewCard";
+import Button from "./Common/Button";
+import ReviewCard from "./Review/ReviewCard";
 
 export default function YarnDetails({ user, logout }) {
   const yarnId = useParams().id;

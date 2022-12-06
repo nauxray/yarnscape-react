@@ -6,10 +6,10 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import Api from "../utils/api/api";
-import AuthApi from "../utils/api/authApi";
-import Button from "./Button";
-import Loader from "./Loader";
+import Api from "../../utils/api/api";
+import AuthApi from "../../utils/api/authApi";
+import Button from "../Common/Button";
+import Loader from "../Common/Loader";
 
 export default function EditReview({ logout }) {
   const { yarnId, reviewId } = useParams();

@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { Tooltip } from "react-tippy";
 
-import Api from "../utils/api/api";
-import Button from "./Button";
-import Loader from "./Loader";
+import Api from "../../utils/api/api";
+import Button from "../Common/Button";
+import Loader from "../Common/Loader";
 import Modal from "./Modal";
 
 const sortOptions = [

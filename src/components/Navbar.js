@@ -7,7 +7,7 @@ import { FiMenu } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 import Api from "../utils/api/api";
-import Button from "./Button";
+import Button from "./Common/Button";
 
 class Navbar extends React.Component {
   constructor(props) {

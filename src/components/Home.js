@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import useModal from "../hooks/useModal";
 import Api from "../utils/api/api";
 import Card from "./Card";
-import FilterSortModal from "./FilterSortModal";
-import Loader from "./Loader";
+import FilterSortModal from "./Modal/FilterSortModal";
+import Loader from "./Common/Loader";
 
 export default function Home() {
   const api = new Api();

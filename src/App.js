@@ -3,16 +3,16 @@ import "react-tippy/dist/tippy.css";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useState } from "react";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import Account from "./components/Account";
+import Account from "./components/Account/Account";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import YarnDetails from "./components/YarnDetails";
-import NewReview from "./components/NewReview";
-import EditReview from "./components/EditReview";
+import NewReview from "./components/Review/NewReview";
+import EditReview from "./components/Review/EditReview";
 
 function App() {
   const [user, setUser] = useState(null);
