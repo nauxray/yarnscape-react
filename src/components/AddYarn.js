@@ -158,7 +158,7 @@ export default function AddYarn({ user, logout }) {
           <div className="inline-form-row">
             <span className="form-label">Brand:*</span>
             <select
-              value={brand?.name}
+              value={brand?._id}
               onChange={(e) => {
                 setBrand(
                   brandsData?.find((item) => item._id === e.target.value)
