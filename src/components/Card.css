@@ -9,6 +9,7 @@
   border-radius: 6px;
   overflow: hidden;
   transition: all 0.2s ease;
+  height: 100%;
 }
 .card-container:hover {
   transform: scale(1.02);
@@ -16,6 +17,9 @@
 .card-image-container {
   overflow: hidden;
   background-color: var(--beige-yellow);
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 .card-image {
   height: 100%;

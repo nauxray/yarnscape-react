@@ -11,6 +11,7 @@ import Api from "../utils/api/api";
 import { parseRating } from "../utils/parseRating";
 import Button from "./Common/Button";
 import ReviewCard from "./Review/ReviewCard";
+import SliderImage from "./SliderImage";
 
 export default function YarnDetails({ user, logout }) {
   const yarnId = useParams().id;
@@ -59,8 +60,7 @@ export default function YarnDetails({ user, logout }) {
                 onClick={prevImg}
                 className="slideshow-arrow"
               />
-              <img
-                className="details-image"
+              <SliderImage
                 src={yarn?.img_url[imgIndex]}
                 alt={yarn?.name}
               />
@@ -142,8 +142,8 @@ export default function YarnDetails({ user, logout }) {
             !user
               ? "Please login to leave a review"
               : userLeftReview
-              ? "You have already left a review on this yarn!"
-              : ""
+                ? "You have already left a review on this yarn!"
+                : ""
           }
         >
           <Link
