@@ -89,4 +89,33 @@ export default class AuthApi {
       return err.response;
     }
   };
+  postYarn = async (
+    name,
+    color,
+    weight,
+    brand,
+    hook_size,
+    needle_size,
+    materials,
+    images
+  ) => {
+    try {
+      const client = this.init();
+      if (!client) return { status: 403 };
+      const res = await client?.post("yarns", {
+        name,
+        color,
+        weight,
+        brand,
+        hook_size,
+        needle_size,
+        materials,
+        img_url: images,
+      });
+      return res;
+    } catch (err) {
+      handleError(err);
+      return err.response;
+    }
+  };
 }
