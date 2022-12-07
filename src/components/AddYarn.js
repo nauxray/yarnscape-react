@@ -37,7 +37,7 @@ export default function AddYarn({ user, logout }) {
 
     const matData = await api.getMaterials();
     setMaterialsData(matData);
-    setMaterials([{ _id: matData[0]._id, percentage: 100 }]);
+    setMaterials([{ _id: matData[0]._id, name: matData[0].name, percentage: 100 }]);
   };
 
   useEffect(() => {
@@ -75,6 +75,10 @@ export default function AddYarn({ user, logout }) {
         .reduce((sum, a) => sum + a, 0) !== 100
     ) {
       toast.error("Materials percentage must add up to 100!");
+      return false;
+    }
+    if (materials?.filter((item) => item.percentage <= 0).length > 0) {
+      toast.error("Materials percentage must be more than 0!");
       return false;
     }
     if (images.filter((item) => !isImage(item)).length > 0) {
@@ -154,7 +158,7 @@ export default function AddYarn({ user, logout }) {
           <div className="inline-form-row">
             <span className="form-label">Brand:*</span>
             <select
-              value={brand?.name}
+              value={brand?._id}
               onChange={(e) => {
                 setBrand(
                   brandsData?.find((item) => item._id === e.target.value)
@@ -222,24 +226,26 @@ export default function AddYarn({ user, logout }) {
                   onClick={() =>
                     setMaterials([
                       ...materials,
-                      { _id: materialsData[0]._id, percentage: 0 },
+                      { _id: materialsData[0]._id, name: materialsData[0].name, percentage: 0 },
                     ])
                   }
                 />
                 <select
                   style={{ margin: 0 }}
-                  value={item._id}
+                  value={`${item._id}__${item.name}`}
                   onChange={(e) => {
                     const newArr = [...materials];
+                    const value = e.target.value.split("__");
                     newArr[index] = {
-                      _id: e.target.value,
+                      _id: value[0],
+                      name: value[1],
                       percentage: item.percentage,
                     };
                     setMaterials(newArr);
                   }}
                 >
                   {materialsData?.map((mat) => (
-                    <option key={mat._id} value={mat._id}>
+                    <option key={mat._id} value={`${mat._id}__${mat.name}`}>
                       {mat.name}
                     </option>
                   ))}
@@ -255,6 +261,7 @@ export default function AddYarn({ user, logout }) {
                       const newArr = [...materials];
                       newArr[index] = {
                         _id: item._id,
+                        name: item.name,
                         percentage: parseInt(e.target.value),
                       };
                       setMaterials(newArr);

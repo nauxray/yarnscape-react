@@ -99,7 +99,9 @@ export default function YarnDetails({ user, logout }) {
               src={"/icons/materials.svg"}
               alt="materials"
             />
-            Material:
+            Material(s): {
+              yarn?.materials?.map((item) => `${item.percentage}% ${item.name}`).join(", ")
+            }
           </div>
           <div
             className="details-info-row"
