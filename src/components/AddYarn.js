@@ -120,7 +120,7 @@ export default function AddYarn({ user, logout }) {
   if (!user) {
     return (
       <div className="add-yarn-container">
-        <p className="add-yarn-header">Please login first! </p>
+        <p className="add-yarn-header" style={{ width: "90%", margin: "5rem auto" }}>Please login first! </p>
       </div>
     );
   }
@@ -132,11 +132,11 @@ export default function AddYarn({ user, logout }) {
       </p>
       <div className="add-yarn-form">
         <div className="add-yarn-form-row">
-          <span className="form-label">Name:*</span>
+          <span className="form-label" style={{ paddingRight: "0.9rem" }}>Name:*</span>
           <input value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div className="add-yarn-form-row">
-          <span className="form-label">Color:*</span>
+          <span className="form-label" style={{ paddingRight: "1.3rem" }}>Color:*</span>
           <input value={color} onChange={(e) => setColor(e.target.value)} />
         </div>
         <div className="add-yarn-form-row">

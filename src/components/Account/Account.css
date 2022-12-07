@@ -1,6 +1,7 @@
 .account-container {
   width: 90%;
   margin: 0 auto;
+  max-width: 50rem;
 }
 .account-profile-header {
   display: flex;
