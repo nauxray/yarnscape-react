@@ -80,7 +80,7 @@ export default function EditReview({ logout }) {
       <p className="review-header review-yarn-name">{yarn?.name}</p>
       <div className="review-form">
         <div className="review-rating">
-          <span className="form-label">Rating:</span>
+          <span className="form-label">Rating:*</span>
           <select
             value={rating}
             onChange={(e) => setRating(parseInt(e.target.value))}
@@ -96,7 +96,7 @@ export default function EditReview({ logout }) {
           <span className="form-label">/5</span>
         </div>
         <p className="form-label">
-          How was your experience working with this yarn?
+          How was your experience working with this yarn?*
         </p>
         <textarea
           value={content}

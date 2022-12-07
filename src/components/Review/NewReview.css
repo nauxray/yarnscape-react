@@ -1,6 +1,7 @@
 .new-review-container {
   width: 90%;
   margin: 2rem auto;
+  max-width: 50rem;
 }
 .new-review-container > .review-header {
   font-size: 1.75rem;
@@ -21,6 +22,7 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 .review-form input,
 select,
@@ -77,7 +79,10 @@ textarea {
   .review-form {
     width: 100%;
   }
-  .review-images {
-    flex-direction: column;
+  .review-images .form-label {
+    font-size: 1.2rem;
+  }
+  .review-form textarea {
+    margin: 0;
   }
 }
