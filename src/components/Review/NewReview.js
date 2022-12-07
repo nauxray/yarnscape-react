@@ -48,7 +48,7 @@ export default function NewReview({ logout }) {
 
     setLoading(true);
     const api = new AuthApi();
-    const filteredImgs = [...imgs].filter((entry) => entry.length > 0);
+    const filteredImgs = [...imgs].filter((entry) => entry.trim().length > 0);
 
     const res = await api.postReview(yarnId, content, rating, filteredImgs);
     if (res.status === 201) {
