@@ -85,7 +85,7 @@ hr {
   flex-direction: column;
   gap: 1rem;
 }
-.reviews-container > div[data-tooltipped] {
+.reviews-container > div.write-review-tooltip {
   width: fit-content;
   align-self: flex-end;
   margin: 1rem 0;

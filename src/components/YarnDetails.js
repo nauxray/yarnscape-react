@@ -136,6 +136,7 @@ export default function YarnDetails({ user, logout }) {
           />
         ))}
         <Tooltip
+          className="write-review-tooltip"
           disabled={!!user && !userLeftReview}
           title={
             !user
