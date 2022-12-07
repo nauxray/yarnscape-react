@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Card.css";
 import { SlStar } from "react-icons/sl";
 import { parseRating } from "../utils/parseRating";
 
 export default function Card({ yarn }) {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <div className="card-container">
       {yarn.img_url?.length > 0 && (
         <div className="card-image-container">
-          <img className="card-image" src={yarn.img_url[0]} alt={yarn.name} />
+          {imgError ?
+            (<div style={{ color: "black", fontWeight: 400, textAlign: "center" }}>This image could not be shown</div>)
+            :
+            (<img
+              className="card-image"
+              src={yarn.img_url[0]}
+              alt={yarn.name}
+              onError={() => setImgError(true)}
+            />)
+          }
         </div>
       )}
       <div className="card-details">

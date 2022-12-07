@@ -28,7 +28,7 @@ function App() {
       <div className="App">
         <Navbar key={user} user={user} setUser={setUser} logout={logout} />
         <ToastContainer
-          position="bottom-right"
+          position="top-center"
           autoClose={3000}
           hideProgressBar={false}
           newestOnTop={false}

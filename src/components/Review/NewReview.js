@@ -10,6 +10,7 @@ import Api from "../../utils/api/api";
 import AuthApi from "../../utils/api/authApi";
 import Button from "../Common/Button";
 import Loader from "../Common/Loader";
+import { isImage } from "../../utils/isImage";
 
 export default function NewReview({ logout }) {
   const yarnId = useParams().id;
@@ -38,6 +39,10 @@ export default function NewReview({ logout }) {
     }
     if (rating <= 0 || rating > 5) {
       toast.error("Rating must be within 1 to 5!");
+      return false;
+    }
+    if (imgs.filter((item) => !isImage(item)).length > 0) {
+      toast.error("Please enter valid image urls");
       return false;
     }
     return true;

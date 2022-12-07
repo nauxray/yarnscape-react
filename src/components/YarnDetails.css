@@ -24,12 +24,6 @@ p.details-header {
 .slideshow-arrow:hover {
   color: var(--beige-yellow);
 }
-.details-image {
-  width: 20rem;
-  height: 20rem;
-  border: 2px solid var(--beige-yellow);
-  border-radius: 6px;
-}
 .slideshow-page {
   text-align: center;
   color: var(--beige-yellow);

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Tooltip } from "react-tippy";
 import { toast } from "react-toastify";
 
+import { isImage } from "../utils/isImage";
 import Api from "../utils/api/api";
 import AuthApi from "../utils/api/authApi";
 import Button from "./Common/Button";
@@ -74,6 +75,10 @@ export default function AddYarn({ user, logout }) {
         .reduce((sum, a) => sum + a, 0) !== 100
     ) {
       toast.error("Materials percentage must add up to 100!");
+      return false;
+    }
+    if (images.filter((item) => !isImage(item)).length > 0) {
+      toast.error("Please enter valid image urls");
       return false;
     }
     return true;
