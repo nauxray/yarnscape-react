@@ -84,7 +84,7 @@ export default class Api extends ApiClient {
       return token.data;
     } catch (err) {
       handleError(err);
-      return null;
+      return err.response;
     }
   };
   createAcc = async (username, password) => {
@@ -96,7 +96,7 @@ export default class Api extends ApiClient {
       return token.data;
     } catch (err) {
       handleError(err);
-      return null;
+      return err.response;
     }
   };
   getReview = async (id) => {
