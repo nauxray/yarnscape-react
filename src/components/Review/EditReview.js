@@ -58,7 +58,7 @@ export default function EditReview({ logout }) {
 
     setLoading(true);
     const api = new AuthApi();
-    const filteredImgs = [...imgs].trim().filter((entry) => entry.length > 0);
+    const filteredImgs = [...imgs].filter((entry) => entry.trim().length > 0);
 
     const res = await api.editReview(reviewId, content, rating, filteredImgs);
     if (res.status === 204) {
