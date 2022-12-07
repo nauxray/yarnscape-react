@@ -33,7 +33,7 @@ export default function Card({ yarn }) {
         </div>
 
         <div className="card-section">
-          <span>materials</span>
+          <span>{yarn.materials?.map((mat) => `${mat.percentage}% ${mat.name}`).join(", ")}</span>
           <span>
             {yarn.reviewCount} review{yarn.reviewCount === 1 ? "" : "s"}
           </span>
