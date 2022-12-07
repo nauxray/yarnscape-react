@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar";
 import YarnDetails from "./components/YarnDetails";
 import NewReview from "./components/Review/NewReview";
 import EditReview from "./components/Review/EditReview";
+import AddYarn from "./components/AddYarn";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -38,7 +39,10 @@ function App() {
           theme="dark"
         />
         <Routes>
-          <Route path="/add-yarn" element={<div>add yarn</div>} />
+          <Route
+            path="/add-yarn"
+            element={<AddYarn key={user} user={user} logout={logout} />}
+          />
           <Route
             path="/yarn/:id"
             element={<YarnDetails user={user} logout={logout} />}

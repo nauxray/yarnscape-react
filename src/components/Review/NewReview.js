@@ -48,7 +48,7 @@ export default function NewReview({ logout }) {
 
     setLoading(true);
     const api = new AuthApi();
-    const filteredImgs = [...imgs].filter((entry) => entry.length > 0);
+    const filteredImgs = [...imgs].filter((entry) => entry.trim().length > 0);
 
     const res = await api.postReview(yarnId, content, rating, filteredImgs);
     if (res.status === 201) {
@@ -70,7 +70,7 @@ export default function NewReview({ logout }) {
       <p className="review-header review-yarn-name">{yarn?.name}</p>
       <div className="review-form">
         <div className="review-rating">
-          <span className="form-label">Rating:</span>
+          <span className="form-label">Rating:*</span>
           <select
             value={rating}
             onChange={(e) => setRating(parseInt(e.target.value))}
@@ -86,7 +86,7 @@ export default function NewReview({ logout }) {
           <span className="form-label">/5</span>
         </div>
         <p className="form-label">
-          How was your experience working with this yarn?
+          How was your experience working with this yarn?*
         </p>
         <textarea
           value={content}
