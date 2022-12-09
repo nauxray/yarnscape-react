@@ -88,6 +88,7 @@ export default function ReviewCard({
                   reviewId={review._id}
                   refreshReviews={refreshReviews}
                   logout={logout}
+                  isProfile={isProfile}
                 />
               </>
             )}
@@ -98,11 +99,6 @@ export default function ReviewCard({
               <SlStar size={22} />
             </div>
             <span>Reviewed {parseTime(review.created_at)}</span>
-            {isProfile && (
-              <Link to={`/yarn/${review.yarn}`} className="review-yarn-link">
-                View Yarn
-              </Link>
-            )}
           </div>
           <p className="review-content">{review.content}</p>
           <div className="review-image-container">

@@ -58,16 +58,6 @@ details.review-card[open] > summary > svg {
   align-items: flex-end;
   flex-wrap: wrap;
 }
-.review-yarn-link {
-  cursor: pointer;
-  margin-left: auto;
-  transition: all 0.2s ease;
-  color: white;
-  text-decoration: none;
-}
-.review-yarn-link:hover {
-  color: var(--beige-yellow);
-}
 .review-content {
   word-wrap: break-word;
 }
