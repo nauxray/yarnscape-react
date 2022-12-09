@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { Tooltip } from "react-tippy";
 
+import { yarnWeights } from "../../utils/weights";
 import Api from "../../utils/api/api";
 import Button from "../Common/Button";
 import Loader from "../Common/Loader";
@@ -147,14 +148,15 @@ export default function FilterSortModal({
                 <option key={" "} value={" "}>
                   {" "}
                 </option>
-                {Array(10)
+                {Array(8)
                   .fill()
                   .map((item, index) => (
-                    <option key={index + 1} value={index + 1}>
-                      {index + 1}
+                    <option key={index} value={index}>
+                      {index}
                     </option>
                   ))}
               </select>
+              <span style={{ fontSize: "1rem" }}>{yarnWeights[weight]}</span>
             </section>
 
             <section className="criteria" style={{ alignItems: "flex-start" }}>

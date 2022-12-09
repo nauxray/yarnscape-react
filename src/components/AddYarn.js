@@ -12,6 +12,7 @@ import Api from "../utils/api/api";
 import AuthApi from "../utils/api/authApi";
 import Button from "./Common/Button";
 import Loader from "./Common/Loader";
+import { yarnWeights } from "../utils/weights";
 
 export default function AddYarn({ user, logout }) {
   const navigate = useNavigate();
@@ -37,7 +38,9 @@ export default function AddYarn({ user, logout }) {
 
     const matData = await api.getMaterials();
     setMaterialsData(matData);
-    setMaterials([{ _id: matData[0]._id, name: matData[0].name, percentage: 100 }]);
+    setMaterials([
+      { _id: matData[0]._id, name: matData[0].name, percentage: 100 },
+    ]);
   };
 
   useEffect(() => {
@@ -120,7 +123,12 @@ export default function AddYarn({ user, logout }) {
   if (!user) {
     return (
       <div className="add-yarn-container">
-        <p className="add-yarn-header" style={{ width: "90%", margin: "5rem auto" }}>Please login first! </p>
+        <p
+          className="add-yarn-header"
+          style={{ width: "90%", margin: "5rem auto" }}
+        >
+          Please login first!{" "}
+        </p>
       </div>
     );
   }
@@ -132,11 +140,15 @@ export default function AddYarn({ user, logout }) {
       </p>
       <div className="add-yarn-form">
         <div className="add-yarn-form-row">
-          <span className="form-label" style={{ paddingRight: "0.9rem" }}>Name:*</span>
+          <span className="form-label" style={{ paddingRight: "0.9rem" }}>
+            Name:*
+          </span>
           <input value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div className="add-yarn-form-row">
-          <span className="form-label" style={{ paddingRight: "1.3rem" }}>Color:*</span>
+          <span className="form-label" style={{ paddingRight: "1.3rem" }}>
+            Color:*
+          </span>
           <input value={color} onChange={(e) => setColor(e.target.value)} />
         </div>
         <div className="add-yarn-form-row">
@@ -146,11 +158,11 @@ export default function AddYarn({ user, logout }) {
               value={weight}
               onChange={(e) => setWeight(parseInt(e.target.value))}
             >
-              {Array(10)
+              {Array(8)
                 .fill()
                 .map((item, index) => (
-                  <option key={index + 1} value={index + 1}>
-                    {index + 1}
+                  <option key={index} value={index}>
+                    {index} {yarnWeights[index]}
                   </option>
                 ))}
             </select>
@@ -226,7 +238,11 @@ export default function AddYarn({ user, logout }) {
                   onClick={() =>
                     setMaterials([
                       ...materials,
-                      { _id: materialsData[0]._id, name: materialsData[0].name, percentage: 0 },
+                      {
+                        _id: materialsData[0]._id,
+                        name: materialsData[0].name,
+                        percentage: 0,
+                      },
                     ])
                   }
                 />

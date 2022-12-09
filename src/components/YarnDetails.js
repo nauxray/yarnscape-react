@@ -12,6 +12,8 @@ import { parseRating } from "../utils/parseRating";
 import Button from "./Common/Button";
 import ReviewCard from "./Review/ReviewCard";
 import SliderImage from "./SliderImage";
+import YarnWeight from "./Icons/YarnWeight";
+import { yarnWeights } from "../utils/weights";
 
 export default function YarnDetails({ user, logout }) {
   const yarnId = useParams().id;
@@ -47,7 +49,7 @@ export default function YarnDetails({ user, logout }) {
       imgIndex + 1 >= images?.length - 1 ? images?.length - 1 : imgIndex + 1
     );
   };
-  console.log(yarn);
+
   return (
     <div className="details-container">
       <p className="details-header">{yarn?.name}</p>
@@ -73,6 +75,10 @@ export default function YarnDetails({ user, logout }) {
           </div>
         )}
         <section className="details-info">
+          <div className="details-info-row" style={{ marginBottom: "1.5rem" }}>
+            <YarnWeight number={yarn?.weight} color={"#7284A8"} />
+            {yarnWeights[yarn?.weight]}
+          </div>
           <div className="details-info-row">
             <img
               className="details-info-icon"
@@ -89,14 +95,6 @@ export default function YarnDetails({ user, logout }) {
                 <AiOutlineInfoCircle className="info" size={20} />
               </Tooltip>
             )}
-          </div>
-          <div className="details-info-row">
-            <img
-              className="details-info-icon"
-              src={"/icons/weight.svg"}
-              alt="weight"
-            />
-            Weight: {yarn?.weight}
           </div>
           <div className="details-info-row">
             <img
