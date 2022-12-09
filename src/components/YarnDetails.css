@@ -53,6 +53,9 @@ p.details-header {
   gap: 0.8rem;
   font-size: 1.2rem;
 }
+.details-info-weight {
+  margin-bottom: 1.5rem;
+}
 .details-info-row > .tools-info {
   display: flex;
   flex-direction: column;
@@ -106,6 +109,9 @@ hr {
   }
   .details-info {
     width: 90%;
+  }
+  .details-info-weight {
+    justify-content: center;
   }
 }
 @media only screen and (max-width: 720px) {
