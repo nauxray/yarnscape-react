@@ -9,9 +9,16 @@
   overflow: hidden;
   transition: all 0.2s ease;
   height: 100%;
+  position: relative;
 }
 .card-container:hover {
   transform: scale(1.02);
+}
+.card-container > .yarn-weight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0.5rem;
 }
 .card-image-container {
   overflow: hidden;
@@ -39,6 +46,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
+}
+.card-section > .yarn-materials {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.card-section > .yarn-review-count {
+  white-space: nowrap;
 }
 .yarn-rating {
   display: flex;

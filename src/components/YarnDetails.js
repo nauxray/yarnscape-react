@@ -12,6 +12,8 @@ import { parseRating } from "../utils/parseRating";
 import Button from "./Common/Button";
 import ReviewCard from "./Review/ReviewCard";
 import SliderImage from "./SliderImage";
+import YarnWeight from "./Icons/YarnWeight";
+import { yarnWeights } from "../utils/weights";
 
 export default function YarnDetails({ user, logout }) {
   const yarnId = useParams().id;
@@ -60,10 +62,7 @@ export default function YarnDetails({ user, logout }) {
                 onClick={prevImg}
                 className="slideshow-arrow"
               />
-              <SliderImage
-                src={yarn?.img_url[imgIndex]}
-                alt={yarn?.name}
-              />
+              <SliderImage src={yarn?.img_url[imgIndex]} alt={yarn?.name} />
               <TfiAngleRight
                 size={25}
                 onClick={nextImg}
@@ -76,6 +75,10 @@ export default function YarnDetails({ user, logout }) {
           </div>
         )}
         <section className="details-info">
+          <div className="details-info-row" style={{ marginBottom: "1.5rem" }}>
+            <YarnWeight number={yarn?.weight} color={"#7284A8"} />
+            {yarnWeights[yarn?.weight]}
+          </div>
           <div className="details-info-row">
             <img
               className="details-info-icon"
@@ -99,9 +102,10 @@ export default function YarnDetails({ user, logout }) {
               src={"/icons/materials.svg"}
               alt="materials"
             />
-            Material(s): {
-              yarn?.materials?.map((item) => `${item.percentage}% ${item.name}`).join(", ")
-            }
+            Material(s):{" "}
+            {yarn?.materials
+              ?.map((item) => `${item.percentage}% ${item.name}`)
+              .join(", ")}
           </div>
           <div
             className="details-info-row"
@@ -144,8 +148,8 @@ export default function YarnDetails({ user, logout }) {
             !user
               ? "Please login to leave a review"
               : userLeftReview
-                ? "You have already left a review on this yarn!"
-                : ""
+              ? "You have already left a review on this yarn!"
+              : ""
           }
         >
           <Link

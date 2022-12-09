@@ -28,11 +28,9 @@
 .login-form button {
   display: block;
   margin: 3rem auto;
-  transition: all 0.2s ease;
   padding: 0.25rem 3rem;
 }
-.action-link:hover,
-.login-form button:hover {
+.action-link:hover {
   opacity: 80%;
 }
 .login-container hr {

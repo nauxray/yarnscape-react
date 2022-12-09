@@ -102,7 +102,7 @@ class Navbar extends React.Component {
                 text={"Log out"}
                 styles={{
                   padding: "0.2rem 2.5rem",
-                  transition: "all 0.3s ease",
+                  transition: "all 0.2s ease",
                 }}
               />
             </div>
@@ -131,7 +131,7 @@ class Navbar extends React.Component {
                 text={"Log out"}
                 styles={{
                   padding: "0.2rem 1.5rem",
-                  transition: "all 0.3s ease",
+                  transition: "all 0.2s ease",
                 }}
               />
             ) : (
