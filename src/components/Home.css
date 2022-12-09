@@ -20,15 +20,20 @@ section.home {
   font-size: 1rem;
   margin-bottom: 1rem;
 }
+.surprise-filter-container {
+  display: flex;
+  justify-content: space-between;
+}
+.surprise-me,
 .search-filter-sort {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
-  margin-left: auto;
   width: fit-content;
   transition: all 0.2s ease;
 }
+.surprise-me:hover,
 .search-filter-sort:hover {
   color: var(--beige-yellow);
 }

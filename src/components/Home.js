@@ -2,7 +2,7 @@ import "./Home.css";
 
 import React, { useEffect, useState } from "react";
 import { BiMenuAltLeft } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import useModal from "../hooks/useModal";
 import Api from "../utils/api/api";
@@ -13,6 +13,7 @@ import Loader from "./Common/Loader";
 export default function Home() {
   const api = new Api();
   const { isShowing, toggle } = useModal();
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState(null);
@@ -34,7 +35,7 @@ export default function Home() {
   }, [searchParams]);
 
   const fetchTopRated = async () => {
-    const res = await api.getYarns({ sort: "rating:desc", limit: 4 });
+    const res = await api.getYarns({ sort: "rating:desc", limit: 5 });
     setTopRated(res);
   };
 
@@ -57,6 +58,13 @@ export default function Home() {
     return filters.length;
   };
 
+  const handleSurpriseMe = async () => {
+    setLoading(true);
+    const res = await api.getYarns();
+    const random = Math.floor(Math.random() * res.length);
+    navigate(`/yarn/${res[random]._id}`);
+  };
+
   return (
     <section className="home">
       {/* search bar */}
@@ -69,12 +77,17 @@ export default function Home() {
           onChange={(e) => setSearchName(e.target.value)}
           onKeyDown={handleKeyPress}
         />
-        <div className="search-filter-sort" onClick={toggle}>
-          <span>Filter/Sort</span>
-          <BiMenuAltLeft size={20} />
-          {filtersApplied() > 0 && (
-            <div className="filters-applied">{filtersApplied()}</div>
-          )}
+        <div className="surprise-filter-container">
+          <div className="surprise-me" onClick={handleSurpriseMe}>
+            <span>Surprise me!</span>
+          </div>
+          <div className="search-filter-sort" onClick={toggle}>
+            <span>Filter/Sort</span>
+            <BiMenuAltLeft size={20} />
+            {filtersApplied() > 0 && (
+              <div className="filters-applied">{filtersApplied()}</div>
+            )}
+          </div>
         </div>
         <FilterSortModal
           isShowing={isShowing}
