@@ -12,7 +12,7 @@
 .nav-links a {
   color: white;
   text-decoration: none;
-  transition: all 300ms ease;
+  transition: all 0.2s ease;
 }
 .nav-links a:hover,
 .nav-links button:hover,
