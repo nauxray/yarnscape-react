@@ -151,7 +151,19 @@ export default function Home() {
         </div>
       </div>
       {/* quote */}
-      <div className="quote-box"></div>
+      <div className="quote-box">
+        <p className="quote">
+          "Art is not a handicraft, it is the transmission of feeling the artist
+          has experienced."
+        </p>
+        <div className="quote-author">
+          <img
+            src="https://www.history.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTU3ODc4Njg0ODUyOTU0NDQx/fb-tolstoy-2.jpg"
+            alt="leo-tolstoy"
+          />
+        </div>
+        <span className="author-name">Leo Tolstoy</span>
+      </div>
     </section>
   );
 }
