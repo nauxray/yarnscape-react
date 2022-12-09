@@ -184,7 +184,7 @@ class Account extends React.Component {
             </div>
           </>
         ) : (
-          <div className="error">You are not logged in :(</div>
+          <div className="error">Please login first!</div>
         )}
       </div>
     );
