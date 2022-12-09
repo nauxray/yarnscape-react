@@ -77,6 +77,14 @@ export default function FilterSortModal({
     fetchData();
   }, []);
 
+  const handleReset = () => {
+    setColor("");
+    setBrand(" ");
+    setWeight(" ");
+    setMaterial([]);
+    setSort("name:asc");
+  };
+
   return (
     <Modal isShowing={isShowing} hide={hide}>
       <div className="filter-sort-container">
@@ -94,12 +102,20 @@ export default function FilterSortModal({
           <>
             <section className="criteria">
               <span>Color</span>
-              <input value={color} onChange={(e) => setColor(e.target.value)} />
+              <input
+                style={{ marginLeft: "1.5rem" }}
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+              />
             </section>
 
             <section className="criteria">
               <span>Brand</span>
-              <select onChange={(e) => setBrand(e.target.value)} value={brand}>
+              <select
+                style={{ marginLeft: "1.2rem" }}
+                onChange={(e) => setBrand(e.target.value)}
+                value={brand}
+              >
                 <option key={" "} value={" "}>
                   {" "}
                 </option>
@@ -143,15 +159,7 @@ export default function FilterSortModal({
 
             <section className="criteria" style={{ alignItems: "flex-start" }}>
               <span>Material(s)</span>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  maxHeight: "5rem",
-                  overflowY: "scroll",
-                  paddingRight: "1rem",
-                }}
-              >
+              <div className="materials-checkboxes">
                 {materialsData?.map((item) => (
                   <div
                     key={item._id}
@@ -195,11 +203,10 @@ export default function FilterSortModal({
               </select>
             </section>
 
-            <Button
-              clickHandler={handleSubmit}
-              text={"Filter/Sort"}
-              styles={{ width: "60%", margin: "2rem auto 0 auto" }}
-            />
+            <section className="filter-modal-btns">
+              <Button clickHandler={handleReset} text={"Reset"} />
+              <Button clickHandler={handleSubmit} text={"Filter/Sort"} />
+            </section>
           </>
         )}
       </div>

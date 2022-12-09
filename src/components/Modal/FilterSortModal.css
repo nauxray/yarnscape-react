@@ -33,9 +33,23 @@ section.criteria > select {
   padding: 0.25rem 0.5rem;
   font-size: 0.9rem;
 }
-.filter-sort-container > button {
+.materials-checkboxes {
+  display: flex;
+  flex-direction: column;
+  max-height: 10rem;
+  overflow-y: scroll;
+  padding-right: 1rem;
+}
+section.filter-modal-btns {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.filter-sort-container button {
+  width: 40%;
   transition: all 0.2s ease;
 }
-.filter-sort-container > button:hover {
+.filter-sort-container button:hover {
   opacity: 80%;
 }
