@@ -29,6 +29,7 @@ export default function AddYarn({ user, logout }) {
   const [loading, setLoading] = useState(false);
   const [brandsData, setBrandsData] = useState([]);
   const [materialsData, setMaterialsData] = useState([]);
+  const fetchingData = materialsData.length === 0 || brandsData.length === 0;
 
   const fetchData = async () => {
     const api = new Api();
@@ -127,8 +128,25 @@ export default function AddYarn({ user, logout }) {
           className="add-yarn-header"
           style={{ width: "90%", margin: "5rem auto" }}
         >
-          Please login first!{" "}
+          Please login first!
         </p>
+      </div>
+    );
+  }
+
+  if (fetchingData) {
+    return (
+      <div className="add-yarn-container">
+        <div
+          style={{
+            width: "3rem",
+            height: "3rem",
+            margin: "30% auto 5% auto",
+          }}
+        >
+          <Loader />
+        </div>
+        <p style={{ fontSize: "1.5rem", textAlign: "center" }}>Loading...</p>
       </div>
     );
   }
