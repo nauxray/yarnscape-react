@@ -20,6 +20,7 @@ p.details-header {
 .slideshow-arrow {
   cursor: pointer;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 .slideshow-arrow:hover {
   color: var(--beige-yellow);
@@ -86,7 +87,6 @@ hr {
 }
 .reviews-container a button {
   padding: 0.3rem 1rem;
-  width: fit-content;
 }
 .reviews-container a.disabled {
   pointer-events: none;
@@ -96,7 +96,6 @@ hr {
 }
 .review-btn-text {
   display: flex;
-  align-items: center;
   gap: 2.5rem;
 }
 @media only screen and (max-width: 768px) {
@@ -120,10 +119,10 @@ hr {
   .details-container {
     width: 90%;
   }
-}
-@media only screen and (max-width: 500px) {
-  .details-image {
-    width: 15rem;
-    height: 15rem;
+  .details-image-slideshow {
+    gap: 1rem;
+  }
+  .reviews-container > div.write-review-tooltip {
+    align-self: center;
   }
 }

@@ -47,7 +47,7 @@ export default function YarnDetails({ user, logout }) {
       imgIndex + 1 >= images?.length - 1 ? images?.length - 1 : imgIndex + 1
     );
   };
-
+  console.log(yarn);
   return (
     <div className="details-container">
       <p className="details-header">{yarn?.name}</p>
@@ -60,10 +60,7 @@ export default function YarnDetails({ user, logout }) {
                 onClick={prevImg}
                 className="slideshow-arrow"
               />
-              <SliderImage
-                src={yarn?.img_url[imgIndex]}
-                alt={yarn?.name}
-              />
+              <SliderImage src={yarn?.img_url[imgIndex]} alt={yarn?.name} />
               <TfiAngleRight
                 size={25}
                 onClick={nextImg}
@@ -96,12 +93,21 @@ export default function YarnDetails({ user, logout }) {
           <div className="details-info-row">
             <img
               className="details-info-icon"
+              src={"/icons/weight.svg"}
+              alt="weight"
+            />
+            Weight: {yarn?.weight}
+          </div>
+          <div className="details-info-row">
+            <img
+              className="details-info-icon"
               src={"/icons/materials.svg"}
               alt="materials"
             />
-            Material(s): {
-              yarn?.materials?.map((item) => `${item.percentage}% ${item.name}`).join(", ")
-            }
+            Material(s):{" "}
+            {yarn?.materials
+              ?.map((item) => `${item.percentage}% ${item.name}`)
+              .join(", ")}
           </div>
           <div
             className="details-info-row"
@@ -144,8 +150,8 @@ export default function YarnDetails({ user, logout }) {
             !user
               ? "Please login to leave a review"
               : userLeftReview
-                ? "You have already left a review on this yarn!"
-                : ""
+              ? "You have already left a review on this yarn!"
+              : ""
           }
         >
           <Link
