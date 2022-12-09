@@ -122,12 +122,12 @@ export default function Home() {
         <img src="/hero.jpg" alt="hero" width={"100%"} />
       </div>
       {/* suggestions */}
-      {topRated?.length > 0 && (
-        <div className="yarn-suggestions">
-          <p>Don't know what you're looking for?</p>
-          <p>Take a look at our top-rated yarns.</p>
-          <div className="top-rated">
-            {topRated?.map((item) => (
+      <div className="yarn-suggestions">
+        <p>Don't know what you're looking for?</p>
+        <p>Take a look at our top-rated yarns.</p>
+        <div className="top-rated">
+          {topRated?.length > 0 ? (
+            topRated?.map((item) => (
               <Link
                 key={item._id}
                 to={`/yarn/${item._id}`}
@@ -135,10 +135,21 @@ export default function Home() {
               >
                 <Card yarn={item} />
               </Link>
-            ))}
-          </div>
+            ))
+          ) : (
+            <div
+              style={{
+                width: "2.5rem",
+                height: "2.5rem",
+                margin: "0 auto",
+                padding: "3rem 0",
+              }}
+            >
+              <Loader />
+            </div>
+          )}
         </div>
-      )}
+      </div>
       {/* quote */}
       <div className="quote-box"></div>
     </section>
