@@ -95,7 +95,7 @@ export default function YarnDetails({ user, logout }) {
           </div>
         )}
         <section className="details-info">
-          <div className="details-info-row" style={{ marginBottom: "1.5rem" }}>
+          <div className="details-info-row details-info-weight">
             <YarnWeight number={yarn?.weight} color={"#7284A8"} />
             {yarnWeights[yarn?.weight]}
           </div>
