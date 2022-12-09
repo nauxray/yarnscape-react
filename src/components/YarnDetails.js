@@ -14,6 +14,7 @@ import ReviewCard from "./Review/ReviewCard";
 import SliderImage from "./SliderImage";
 import YarnWeight from "./Icons/YarnWeight";
 import { yarnWeights } from "../utils/weights";
+import Loader from "./Common/Loader";
 
 export default function YarnDetails({ user, logout }) {
   const yarnId = useParams().id;
@@ -24,6 +25,8 @@ export default function YarnDetails({ user, logout }) {
   const images = yarn?.img_url;
   const authorList = reviews?.map((item) => item.author);
   const userLeftReview = authorList?.includes(user?._id);
+
+  const fetchingData = yarn === null || reviews === null;
 
   const api = new Api();
   const getReviewDetails = async () => {
@@ -49,6 +52,23 @@ export default function YarnDetails({ user, logout }) {
       imgIndex + 1 >= images?.length - 1 ? images?.length - 1 : imgIndex + 1
     );
   };
+
+  if (fetchingData) {
+    return (
+      <div className="details-container">
+        <div
+          style={{
+            width: "3rem",
+            height: "3rem",
+            margin: "30% auto 5% auto",
+          }}
+        >
+          <Loader />
+        </div>
+        <p style={{ fontSize: "1.5rem", textAlign: "center" }}>Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="details-container">
