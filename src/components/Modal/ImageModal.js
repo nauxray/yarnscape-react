@@ -10,6 +10,7 @@ export default function ImageModal({
   hide,
   imgSrc,
   enableSlideShow,
+  imgCount,
   prevImg,
   nextImg,
 }) {
@@ -34,6 +35,7 @@ export default function ImageModal({
           />
         )}
       </div>
+      {enableSlideShow && <p className="image-modal-counter">{imgCount}</p>}
     </Modal>
   );
 }

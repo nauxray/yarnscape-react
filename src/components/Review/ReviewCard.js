@@ -134,6 +134,7 @@ export default function ReviewCard({
             hide={toggle}
             imgSrc={imgs[imgIndex]}
             enableSlideShow={imgs?.length > 1}
+            imgCount={`${imgIndex + 1}/${imgs?.length}`}
             prevImg={prevImg}
             nextImg={nextImg}
           />

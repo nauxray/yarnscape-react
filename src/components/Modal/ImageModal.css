@@ -27,3 +27,7 @@
   height: 100%;
   object-fit: contain;
 }
+.image-modal-counter {
+  text-align: center;
+  color: white;
+}
