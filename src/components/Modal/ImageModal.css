@@ -1,0 +1,39 @@
+.image-modal-container {
+  margin: 2rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.image-modal-slide-arrow {
+  cursor: pointer;
+  color: white;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.image-modal-slide-arrow:hover {
+  color: var(--beige-yellow);
+}
+.image-modal-img-wrapper {
+  min-width: 20rem;
+  min-height: 20rem;
+  flex-shrink: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.image-modal-counter {
+  text-align: center;
+  color: white;
+}
+@media only screen and (max-width: 500px) {
+  .image-modal-img-wrapper {
+    min-width: 0;
+    min-height: 0;
+  }
+}

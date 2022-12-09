@@ -1,14 +1,15 @@
 import "./ReviewMenu.css";
 
 import React from "react";
+import { FiLink2 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import useModal from "../../hooks/useModal";
 import AuthApi from "../../utils/api/authApi";
 import Button from "../Common/Button";
-import Modal from "../Modal/Modal";
 import Edit from "../Icons/Edit";
+import Modal from "../Modal/Modal";
 
 export default function ReviewMenu({
   showMenu,
@@ -17,6 +18,7 @@ export default function ReviewMenu({
   reviewId,
   refreshReviews,
   logout,
+  isProfile,
 }) {
   const navigate = useNavigate();
   const { isShowing, toggle } = useModal();
@@ -44,6 +46,18 @@ export default function ReviewMenu({
   return (
     <>
       <ul className={`review-card-menu ${showMenu ? "menu-open" : ""}`}>
+        {isProfile && (
+          <li
+            className="review-menu-item"
+            onClick={() => {
+              toggle();
+              navigate(`/yarn/${yarnId}`);
+            }}
+          >
+            <FiLink2 />
+            View Yarn
+          </li>
+        )}
         <li
           className="review-menu-item"
           onClick={() => {

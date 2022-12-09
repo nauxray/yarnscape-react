@@ -58,16 +58,6 @@ details.review-card[open] > summary > svg {
   align-items: flex-end;
   flex-wrap: wrap;
 }
-.review-yarn-link {
-  cursor: pointer;
-  margin-left: auto;
-  transition: all 0.2s ease;
-  color: white;
-  text-decoration: none;
-}
-.review-yarn-link:hover {
-  color: var(--beige-yellow);
-}
 .review-content {
   word-wrap: break-word;
 }
@@ -78,6 +68,7 @@ details.review-card[open] > summary > svg {
   padding-right: 1rem;
 }
 .review-image {
+  cursor: pointer;
   flex-shrink: 0;
   width: 10rem;
   height: 10rem;
@@ -85,6 +76,11 @@ details.review-card[open] > summary > svg {
   border: 1px solid white;
   border-radius: 4px;
   margin-bottom: 1rem;
+  transition: all 0.2s ease;
+}
+.review-image:hover {
+  opacity: 80%;
+  transform: scale(0.98);
 }
 .review-image > img {
   object-fit: cover;

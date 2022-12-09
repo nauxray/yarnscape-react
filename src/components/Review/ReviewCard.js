@@ -9,6 +9,8 @@ import Api from "../../utils/api/api";
 import { parseRating, parseTime } from "../../utils/parseRating";
 import Loader from "../Common/Loader";
 import ReviewMenu from "./ReviewMenu";
+import useModal from "../../hooks/useModal";
+import ImageModal from "../Modal/ImageModal";
 
 export default function ReviewCard({
   review,
@@ -22,6 +24,9 @@ export default function ReviewCard({
   const [showMenu, setShowMenu] = useState(false);
   const [loading, setLoading] = useState(false);
   const [imgs, setImgs] = useState(review?.img_url);
+  const [imgIndex, setImgIndex] = useState(0);
+
+  const { isShowing, toggle } = useModal();
 
   const api = new Api();
   const isOwnReview = !!user && author?._id === user?._id;
@@ -44,6 +49,15 @@ export default function ReviewCard({
     getAuthor();
     if (isProfile) getYarn();
   }, []);
+
+  const prevImg = () => {
+    setImgIndex(imgIndex - 1 < 0 ? 0 : imgIndex - 1);
+  };
+  const nextImg = () => {
+    setImgIndex(
+      imgIndex + 1 >= imgs?.length - 1 ? imgs?.length - 1 : imgIndex + 1
+    );
+  };
 
   const reviewContent = (
     <div className="review-card">
@@ -74,6 +88,7 @@ export default function ReviewCard({
                   reviewId={review._id}
                   refreshReviews={refreshReviews}
                   logout={logout}
+                  isProfile={isProfile}
                 />
               </>
             )}
@@ -84,17 +99,19 @@ export default function ReviewCard({
               <SlStar size={22} />
             </div>
             <span>Reviewed {parseTime(review.created_at)}</span>
-            {isProfile && (
-              <Link to={`/yarn/${review.yarn}`} className="review-yarn-link">
-                View Yarn
-              </Link>
-            )}
           </div>
           <p className="review-content">{review.content}</p>
           <div className="review-image-container">
             {imgs?.map((item, index) => {
               return (
-                <div key={index} className="review-image">
+                <div
+                  key={index}
+                  className="review-image"
+                  onClick={() => {
+                    setImgIndex(index);
+                    toggle();
+                  }}
+                >
                   <img
                     src={item}
                     alt={item}
@@ -108,6 +125,15 @@ export default function ReviewCard({
               );
             })}
           </div>
+          <ImageModal
+            isShowing={isShowing}
+            hide={toggle}
+            imgSrc={imgs[imgIndex]}
+            enableSlideShow={imgs?.length > 1}
+            imgCount={`${imgIndex + 1}/${imgs?.length}`}
+            prevImg={prevImg}
+            nextImg={nextImg}
+          />
         </>
       )}
     </div>
