@@ -142,6 +142,7 @@ export default function FilterSortModal({
             <section className="criteria">
               <span>Weight</span>
               <select
+                className="weight-selection"
                 onChange={(e) => setWeight(e.target.value)}
                 value={weight}
               >
