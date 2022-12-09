@@ -63,6 +63,7 @@ p.details-header {
 .details-info-row .info {
   cursor: pointer;
   transition: all 0.2s ease;
+  color: #595959;
 }
 .details-info-row .info:hover {
   color: var(--beige-yellow);

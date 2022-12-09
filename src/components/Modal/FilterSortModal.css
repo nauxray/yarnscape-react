@@ -20,6 +20,7 @@ section.criteria > div[data-tooltipped] {
 section.criteria .info {
   cursor: pointer;
   transition: all 0.2s ease;
+  color: #595959;
 }
 section.criteria .info:hover {
   color: var(--beige-yellow);
