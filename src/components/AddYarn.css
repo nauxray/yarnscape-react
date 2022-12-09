@@ -15,13 +15,9 @@
   gap: 1rem;
 }
 .add-yarn-form > button {
-  transition: all 0.2s ease;
   width: fit-content;
   align-self: center;
   padding: 0.3rem 3rem;
-}
-.add-yarn-form > button:hover {
-  opacity: 80%;
 }
 .add-yarn-form-row {
   display: flex;

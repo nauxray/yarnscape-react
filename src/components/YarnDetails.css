@@ -86,11 +86,7 @@ hr {
 }
 .reviews-container a button {
   padding: 0.3rem 1rem;
-  transition: all 0.2s ease;
   width: fit-content;
-}
-.reviews-container a button:hover {
-  opacity: 80%;
 }
 .reviews-container a.disabled {
   pointer-events: none;

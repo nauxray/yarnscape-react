@@ -14,11 +14,7 @@
   border: transparent;
   transition: all 0.3s ease;
 }
-.save-btn > button {
-  transition: all 0.3s ease;
-}
-.account-profile-header > button:hover,
-.save-btn > button:hover {
+.account-profile-header > button:hover {
   opacity: 80%;
 }
 .account-profile-header svg {

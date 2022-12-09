@@ -48,8 +48,4 @@ section.filter-modal-btns {
 }
 .filter-sort-container button {
   width: 40%;
-  transition: all 0.2s ease;
-}
-.filter-sort-container button:hover {
-  opacity: 80%;
 }

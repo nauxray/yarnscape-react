@@ -39,8 +39,4 @@
 }
 .confirmation-modal-btns > button {
   padding: 0.25rem 1rem;
-  transition: all 0.2s ease;
-}
-.confirmation-modal-btns > button:hover {
-  opacity: 80%;
 }
