@@ -13,6 +13,7 @@ import YarnDetails from "./components/YarnDetails";
 import NewReview from "./components/Review/NewReview";
 import EditReview from "./components/Review/EditReview";
 import AddYarn from "./components/AddYarn";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <ScrollToTop />
       <Navbar key={user} user={user} setUser={setUser} logout={logout} />
       <Routes>
         <Route
