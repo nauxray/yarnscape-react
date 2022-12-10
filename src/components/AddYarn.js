@@ -13,6 +13,7 @@ import AuthApi from "../utils/api/authApi";
 import Button from "./Common/Button";
 import Loader from "./Common/Loader";
 import { yarnWeights } from "../utils/weights";
+import NotLoggedIn from "./Common/NotLoggedIn";
 
 export default function AddYarn({ user, logout }) {
   const navigate = useNavigate();
@@ -124,11 +125,8 @@ export default function AddYarn({ user, logout }) {
   if (!user) {
     return (
       <div className="add-yarn-container">
-        <p
-          className="add-yarn-header"
-          style={{ width: "90%", margin: "5rem auto" }}
-        >
-          Please login first!
+        <p className="add-yarn-header" style={{ margin: "5rem auto" }}>
+          <NotLoggedIn />
         </p>
       </div>
     );
@@ -185,9 +183,10 @@ export default function AddYarn({ user, logout }) {
                 ))}
             </select>
           </div>
-          <div className="inline-form-row">
+          <div className="inline-form-row add-yarn-brand">
             <span className="form-label">Brand:*</span>
             <select
+              className="add-yarn-brand-select"
               value={brand?._id}
               onChange={(e) => {
                 setBrand(
@@ -225,6 +224,7 @@ export default function AddYarn({ user, logout }) {
           <div className="add-yarn-form-row">
             <span className="form-label">Hook (mm):*</span>
             <input
+              className="add-yarn-hook-input"
               value={hookSize}
               type="number"
               min={0}
@@ -251,8 +251,7 @@ export default function AddYarn({ user, logout }) {
             {materials?.map((item, index) => (
               <div key={index}>
                 <IoIosAddCircleOutline
-                  size={30}
-                  className="icon-btn"
+                  className="icon-btn add-icon"
                   onClick={() =>
                     setMaterials([
                       ...materials,
@@ -286,7 +285,6 @@ export default function AddYarn({ user, logout }) {
                 </select>
                 <div className="yarn-material-percentage">
                   <input
-                    style={{ width: "4rem", paddingRight: 0 }}
                     type="number"
                     value={item.percentage}
                     min={1}
@@ -305,8 +303,7 @@ export default function AddYarn({ user, logout }) {
                 </div>
                 {index > 0 && (
                   <AiOutlineClose
-                    size={25}
-                    className="icon-btn"
+                    className="icon-btn cancel-icon"
                     onClick={() => {
                       const newMats = [...materials];
                       newMats.splice(index, 1);
@@ -324,8 +321,7 @@ export default function AddYarn({ user, logout }) {
             {images?.map((item, index) => (
               <div key={index}>
                 <IoIosAddCircleOutline
-                  size={30}
-                  className="icon-btn"
+                  className="icon-btn add-icon"
                   onClick={() => setImages([...images, ""])}
                 />
                 <input
@@ -339,8 +335,7 @@ export default function AddYarn({ user, logout }) {
                 />
                 {index > 0 && (
                   <AiOutlineClose
-                    size={25}
-                    className="icon-btn"
+                    className="icon-btn cancel-icon"
                     onClick={() => {
                       const newImgs = [...images];
                       newImgs.splice(index, 1);

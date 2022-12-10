@@ -80,6 +80,12 @@ hr.add-yarn-section-break {
   flex-shrink: 0;
   color: #595959;
 }
+.add-icon {
+  font-size: 30px;
+}
+.cancel-icon {
+  font-size: 25px;
+}
 .icon-btn:hover {
   color: var(--beige-yellow);
 }
@@ -91,9 +97,19 @@ hr.add-yarn-section-break {
   font-size: 1.2rem;
   font-weight: 400;
 }
+.yarn-material-percentage > input {
+  width: 4rem;
+  padding-right: 0;
+}
 @media only screen and (max-width: 720px) {
   .add-yarn-container {
     width: 90%;
+  }
+  .add-yarn-form {
+    width: 100%;
+  }
+  .add-yarn-images-row > div {
+    gap: 0.5rem;
   }
   .add-yarn-images-row > div > input {
     width: 100%;
@@ -110,5 +126,27 @@ hr.add-yarn-section-break {
   }
   .form-label {
     font-size: 1.2rem;
+  }
+}
+@media only screen and (max-width: 630px) {
+  .add-yarn-brand {
+    margin-top: 0.8rem;
+  }
+  .add-yarn-brand-select {
+    margin-left: 1.1rem;
+  }
+
+  .add-yarn-hook-input {
+    margin-left: 1.3rem;
+  }
+  .add-icon {
+    font-size: 25px;
+  }
+  .cancel-icon {
+    font-size: 20px;
+  }
+  .yarn-material-percentage > input {
+    width: 3rem;
+    padding: 0.5rem;
   }
 }

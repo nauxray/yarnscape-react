@@ -33,7 +33,7 @@
 .action-link:hover {
   opacity: 80%;
 }
-.login-container hr {
+hr.login-divider {
   width: 80%;
 }
 .login-prompt {

@@ -106,7 +106,7 @@ export default function Login({ user, setUser }) {
           />
         )}
       </div>
-      <hr />
+      <hr className="login-divider" />
       <div className="login-prompt">
         <p>{createAcc ? "Already a member?" : "Not a member?"}</p>
         <p className="action-link" onClick={() => setCreateAcc(!createAcc)}>

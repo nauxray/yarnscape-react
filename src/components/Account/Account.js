@@ -11,6 +11,7 @@ import Button from "../Common/Button";
 import Loader from "../Common/Loader";
 import Edit from "../Icons/Edit";
 import ReviewCard from "../Review/ReviewCard";
+import NotLoggedIn from "../Common/NotLoggedIn";
 
 class Account extends React.Component {
   constructor(props) {
@@ -160,10 +161,13 @@ class Account extends React.Component {
                 )}
               </div>
             )}
-            <hr />
-            <p className="heading">
-              Your Past Reviews ({this.state.userReviews?.length})
-            </p>
+            <hr className="account-divider" />
+            <div className="account-reviews-header">
+              <p className="heading">
+                Your Past Reviews ({this.state.userReviews?.length})
+              </p>
+              <img src="/images/sunglasses-cat.svg" alt="sunglasses-cat" />
+            </div>
             <div className="account-reviews">
               {this.state.userReviews?.length > 0 ? (
                 this.state.userReviews.map((item) => {
@@ -184,7 +188,7 @@ class Account extends React.Component {
             </div>
           </>
         ) : (
-          <div className="error">Please login first!</div>
+          <NotLoggedIn />
         )}
       </div>
     );
