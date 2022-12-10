@@ -161,7 +161,7 @@ class Account extends React.Component {
                 )}
               </div>
             )}
-            <hr />
+            <hr className="account-divider" />
             <div className="account-reviews-header">
               <p className="heading">
                 Your Past Reviews ({this.state.userReviews?.length})
