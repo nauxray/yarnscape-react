@@ -82,12 +82,15 @@ export default function Login({ user, setUser }) {
       </div>
       <div className="login-form">
         <label>Username</label>
-        <input value={username} onChange={(e) => setUsername(e.target.value)} />
+        <input
+          value={username}
+          onChange={(e) => setUsername(e.target.value.trim())}
+        />
         <label>Password</label>
         <input
           type={"password"}
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value.trim())}
         />
         {loading ? (
           <div
