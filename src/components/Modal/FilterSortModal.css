@@ -62,4 +62,7 @@ section.filter-modal-btns {
   section.criteria > select.weight-selection {
     width: fit-content;
   }
+  .filter-modal-brand-tooltip {
+    display: none !important;
+  }
 }
