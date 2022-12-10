@@ -3,10 +3,10 @@
   padding: 3rem 4rem 5rem 4rem;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
   color: white;
   gap: 2rem;
   font-weight: 300;
+  position: relative;
 }
 .footer-left {
   display: flex;
@@ -16,9 +16,9 @@
 }
 .footer-right {
   display: flex;
-  flex-wrap: wrap;
   column-gap: 4rem;
   row-gap: 1rem;
+  height: fit-content;
 }
 .footer-right > a {
   color: white;
@@ -31,8 +31,19 @@
   color: var(--beige-yellow);
   text-decoration: underline;
 }
+.footer-cat {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+}
 @media only screen and (max-width: 720px) {
   #footer {
-    padding: 3rem 2rem 5rem 2rem;
+    padding: 3rem 2rem 7rem 2rem;
+  }
+}
+@media only screen and (max-width: 530px) {
+  .footer-right {
+    flex-direction: column;
+    align-items: flex-end;
   }
 }

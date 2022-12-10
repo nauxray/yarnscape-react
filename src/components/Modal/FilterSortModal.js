@@ -128,10 +128,12 @@ export default function FilterSortModal({
               </select>
               {brand !== " " && (
                 <Tooltip
+                  className="filter-modal-brand-tooltip"
+                  disabled={!brandsData?.find((item) => item._id === brand)}
                   title={
                     brandsData?.find((item) => item._id === brand)?.description
                   }
-                  position="right"
+                  position="top"
                   hideOnClick={false}
                 >
                   <AiOutlineInfoCircle className="info" size={20} />

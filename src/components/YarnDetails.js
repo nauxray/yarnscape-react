@@ -147,7 +147,7 @@ export default function YarnDetails({ user, logout }) {
         <span>{parseRating(yarn?.average_rating)}</span>
         <SlStar size={25} />
       </div>
-      <hr />
+      <hr className="yarn-details-divider" />
       <p className="details-review-count">
         {reviews?.length} review{reviews?.length === 1 ? "" : "s"}
       </p>

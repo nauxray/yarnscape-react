@@ -98,7 +98,7 @@ export default function ReviewCard({
               <span>{parseRating(review.rating)}</span>
               <SlStar size={22} />
             </div>
-            <span>Reviewed {parseTime(review.created_at)}</span>
+            <span>Reviewed {parseTime(review.created_at, "D MMM YYYY")}</span>
           </div>
           <p className="review-content">{review.content}</p>
           <div className="review-image-container">

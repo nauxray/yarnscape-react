@@ -71,7 +71,7 @@ p.details-header {
 .details-info-row .info:hover {
   color: var(--beige-yellow);
 }
-hr {
+hr.yarn-details-divider {
   margin: 2rem auto;
   width: 80%;
 }
