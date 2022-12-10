@@ -162,9 +162,12 @@ class Account extends React.Component {
               </div>
             )}
             <hr />
-            <p className="heading">
-              Your Past Reviews ({this.state.userReviews?.length})
-            </p>
+            <div className="account-reviews-header">
+              <p className="heading">
+                Your Past Reviews ({this.state.userReviews?.length})
+              </p>
+              <img src="/images/sunglasses-cat.svg" alt="sunglasses-cat" />
+            </div>
             <div className="account-reviews">
               {this.state.userReviews?.length > 0 ? (
                 this.state.userReviews.map((item) => {
