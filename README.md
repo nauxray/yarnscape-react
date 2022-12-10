@@ -6,9 +6,7 @@ As a crocheter/crochetier myself, I often struggle to find affordable and good q
 
 Therefore, I wanted to create a platform to collect data on the best yarns to choose for different kinds of projects, and the most liked yarns among the community. The platform will make the process of choosing yarn easier for my fellow hobbyists interested in yarn craft, and will also serve as a space for creative discussion and community building. The data collected from analyzing user reviews can also be used for monetization, if we want to open an online shop for users to buy the top rated yarns for their projects.
 
-Live Website: [Yarnscape](https://youtube.com)
-
-**assume that images are uploaded as url (imgur)**
+Live Website: https://yarnscape.netlify.app
 
 ## 1. UI/UX
 
@@ -42,19 +40,13 @@ My strategy to design across different devices is to adapt the experience for ea
 
 ## 2. Features
 
-> List down the major features of your application, and also the
-> algorithms or techniques that you have used to implement those
-> features. If there are any limitations or bugs, please describe them
-> as well. If you have any features pending implementation , you can
-> also take the opportunity to discuss them here.
-
 The main features of the website are as listed below:
 
 1. Browse through different yarns easily
-2. Sorting system (sort by average rating, number of reviews)
+2. Sorting system (sort by alphabetical order, average rating, number of reviews)
 3. Filter and search system to narrow down yarns displayed
    - Search by yarn name
-   - Filter by brand, material, average rating, weight,color
+   - Filter by color, brand, weight, material
 4. Contribute yarn reviews, and ability to edit or delete a review
 5. View your past reviews to keep track of your progress
 6. Contribute yarn listings
@@ -62,19 +54,20 @@ The main features of the website are as listed below:
 8. Ability to change username/password
 
 Known bugs:
+
 Future features:
 
 1.  Ability to report a user or flag a review for spam, inappropriate content, etc.
-2.  Ability to upvote or downvote reviews
-3.  Ability to react to user reviews with emojis
-4.  Ability to reply to user reviews to facilitate discussion
-5.  Ability to view other users' profile to see the date they joined, reviews posted, etc.
-6.  Ability to add yarn to cart and purchase yarns
-7.  Ability to save/favorite/like a yarn
-8.  Retrieve username/password if user forgets
-9.  Ability to view yarns contributed
-10. Add user profile picture
-11. More secure encryption for user password
+1.  Ability to upvote or downvote reviews
+1.  Ability to react to user reviews with emojis
+1.  Ability to reply to user reviews to facilitate discussion
+1.  Ability to view other users' profile to see the date they joined, reviews posted, etc.
+1.  Ability to add yarn to cart and purchase yarns
+1.  Ability to save/favorite/like a yarn
+1.  Retrieve username/password if user forgets
+1.  Ability to view yarns contributed
+1.  Add user profile picture
+1.  Better security measures for user password
 
 ## 3. Technologies Used
 
@@ -86,18 +79,22 @@ Provide an overview of the languages, frameworks, libraries and any other tools 
 
 ### Libraries used
 
-1. react-menu: https://www.npmjs.com/package/@szhsin/react-menu (filter/sort menu)
-2. tailwindcss: https://www.npmjs.com/package/tailwindcss (easy css)
-3. react-icons: https://www.npmjs.com/package/react-icons (various icons)
-4. moment: https://www.npmjs.com/package/moment (display date time)
-5. react-toastify: https://www.npmjs.com/package/react-toastify (when user has uploaded yarn listing or review successfully)
-6. tippyjs: https://www.npmjs.com/package/@tippyjs/react (tooltips)
+1. react-router-dom:https://github.com/remix-run/react-router (for routing different pages & redirecting user)
+2. axios: https://github.com/axios/axios (to call apis)
+3. react-icons: https://github.com/react-icons/react-icons (various icons throughout the app)
+4. dayjs: https://github.com/iamkun/dayjs (display date time)
+5. react-toastify: https://github.com/fkhadra/react-toastify (toasters)
+6. react-tippy: https://github.com/tvkhoa/react-tippy (tooltips)
 
 ## 4. Sample Mongo Documents
 
 Add in a sample document from each collection you have in your MongoDB. You might save them as json files in a folder on your Express/Mongo repository.
 
 ## 5. Testing
+
+Assumptions:
+
+1. User will upload images as image urls instead of image files.
 
 Provide proof that you have done testing on your project. You can provide step by step instructions for the examiner to test the project. Use your user stories and their acceptance criteria as a starting point. Do note that any unhandled exceptions, console errors etc will be considered as failing the testing criteria.
 
@@ -125,3 +122,14 @@ Need to provide:
 - Any assumptions or prerequisites
 
 ## Credits
+
+- [Decode JWT token without library](https://stackoverflow.com/questions/38552003/how-to-decode-jwt-token-in-javascript-without-using-a-library)
+- [How to use react-router-dom useNavigate hook in class components](https://stackoverflow.com/questions/70143135/how-to-use-react-router-dom-v6-navigate-in-class-component)
+- [CSS Loader](https://www.w3schools.com/howto/howto_css_loader.asp)
+- [Custom hook for reusable Modal component](https://upmostly.com/tutorials/modal-components-react-custom-hooks)
+- [Scroll to top on page change](https://stackoverflow.com/questions/36904185/react-router-scroll-to-top-on-every-transition)
+- [Fix react-router-dom page not found error after netlify deployment](https://www.freecodecamp.org/news/how-to-deploy-react-router-based-app-to-netlify/)
+- [Regex for checking valid image url](https://bobbyhadz.com/blog/javascript-check-if-url-is-image)
+- [Leo Tolstoy portrait image](https://www.history.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTU3ODc4Njg0ODUyOTU0NDQx/fb-tolstoy-2.jpg)
+- [Logo created using Canva, cat vector images from Canva](https://www.canva.com/design/DAFSqBjsPpI/X1CWMmWEWr0p_fyfaEkY1g/view?utm_content=DAFSqBjsPpI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+- [Favicon generator](https://favicon.io/)
