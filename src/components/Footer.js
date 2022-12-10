@@ -22,6 +22,9 @@ export default function Footer() {
         <Link to="/account">
           <span>Account</span>
         </Link>
+        <Link to="/login">
+          <span>Login</span>
+        </Link>
       </div>
       <img
         className="footer-cat"
