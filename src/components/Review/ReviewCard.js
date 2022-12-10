@@ -3,7 +3,6 @@ import "./ReviewCard.css";
 import React, { useEffect, useState } from "react";
 import { RxCaretDown, RxDotsHorizontal } from "react-icons/rx";
 import { SlStar } from "react-icons/sl";
-import { Link } from "react-router-dom";
 
 import Api from "../../utils/api/api";
 import { parseRating, parseTime } from "../../utils/parseRating";
