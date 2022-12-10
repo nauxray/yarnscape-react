@@ -6,6 +6,6 @@ export const parseRating = (avgRating) => {
     .replace(/[.,]0$/, "")}/5`;
 };
 
-export const parseTime = (timestamp) => {
-  return dayjs(timestamp).format("D MMMM YYYY");
+export const parseTime = (timestamp, format) => {
+  return dayjs(timestamp).format(format ?? "D MMMM YYYY");
 };
