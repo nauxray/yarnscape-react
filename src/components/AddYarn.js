@@ -13,6 +13,7 @@ import AuthApi from "../utils/api/authApi";
 import Button from "./Common/Button";
 import Loader from "./Common/Loader";
 import { yarnWeights } from "../utils/weights";
+import NotLoggedIn from "./Common/NotLoggedIn";
 
 export default function AddYarn({ user, logout }) {
   const navigate = useNavigate();
@@ -124,11 +125,8 @@ export default function AddYarn({ user, logout }) {
   if (!user) {
     return (
       <div className="add-yarn-container">
-        <p
-          className="add-yarn-header"
-          style={{ width: "90%", margin: "5rem auto" }}
-        >
-          Please login first!
+        <p className="add-yarn-header" style={{ margin: "5rem auto" }}>
+          <NotLoggedIn />
         </p>
       </div>
     );

@@ -11,6 +11,7 @@ import Button from "../Common/Button";
 import Loader from "../Common/Loader";
 import Edit from "../Icons/Edit";
 import ReviewCard from "../Review/ReviewCard";
+import NotLoggedIn from "../Common/NotLoggedIn";
 
 class Account extends React.Component {
   constructor(props) {
@@ -184,7 +185,7 @@ class Account extends React.Component {
             </div>
           </>
         ) : (
-          <div className="error">Please login first!</div>
+          <NotLoggedIn />
         )}
       </div>
     );

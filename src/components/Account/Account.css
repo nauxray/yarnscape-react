@@ -60,19 +60,11 @@ hr {
   flex-direction: column;
   gap: 1rem;
 }
-.error {
-  font-size: 1.75rem;
-  width: 90%;
-  margin: 5rem auto;
-}
 @media only screen and (max-width: 720px) {
   .account-profile-header {
     justify-content: space-between;
   }
   .account-profile input {
     margin-top: 0.5rem;
-  }
-  .error {
-    font-size: 1.25rem;
   }
 }

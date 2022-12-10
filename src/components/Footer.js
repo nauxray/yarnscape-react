@@ -23,6 +23,11 @@ export default function Footer() {
           <span>Account</span>
         </Link>
       </div>
+      <img
+        className="footer-cat"
+        src="/images/top-hat-cat.svg"
+        alt="top-hat-cat"
+      />
     </footer>
   );
 }
