@@ -17,7 +17,7 @@ export default function Footer() {
           <span>Search</span>
         </Link>
         <Link to="/add-yarn">
-          <span>Add yarn</span>
+          <span>Add Yarn</span>
         </Link>
         <Link to="/account">
           <span>Account</span>
