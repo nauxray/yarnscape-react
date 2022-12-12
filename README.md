@@ -18,15 +18,14 @@ This section will dive deeper into the strategies and thought processes while de
 
 ### Related Documents/Diagrams
 
-> Share links to wireframes, mockups, diagrams that are used in the
-> UI/UX processes. Those files can be pushed to the Github repository,
-> or be placed in a separate PDF file as part of the repository.
+[Mobile & Desktop layout Figma](https://www.figma.com/file/TirCjnyOM7wp6AkEUEKAGc/yarnscape?node-id=0%3A1&t=UHLQME6A4gCQkhPd-3)
+[Mood Board & Wireframe Figma](https://www.figma.com/file/WuZyMa9XHDQgnUicjnNdby/yarnscape-wireframes?node-id=0%3A1&t=Nc3HB9fqKoYOKZuA-3)
 
 ### 5 Planes of UI/UX
 
 For the Strategy plane, I wanted to address the issue for my target audience - people who craft using yarn, who struggle with having to do multiple research and heading down to stores in order to test or feel the yarn that they wish to use. The objective of the website is to accumulate various reviews of different types of yarns which will assist the users by removing the need to browse multiple sites in order to get real, first-hand reviews on the yarn.
 
-Thus for the scope, I decided to include features that allow users to filter or sort yarn types such that it is easier for them to identify the type of yarn they wish to see, saving them time so they don't have to keep scrolling to find what they want. **On the functions specifications side, I also wanted to include a feature to save previously discovered yarns in the functional specifications.** (need rephrasing) Meanwhile, in the content requirements I will list information like images of each yarn, its name, recommended hook or needle size, weight, color, brand, and material.
+Thus for the scope, I decided to include features that allow users to filter or sort yarn types such that it is easier for them to identify the type of yarn they wish to see, saving them time so they don't have to keep scrolling to find what they want. Meanwhile, in the content requirements I will list information like images of each yarn, its name, recommended hook or needle size, weight, color, brand, and material.
 
 For the structure on the interaction design side, users will be able to interact with the site easily with the organization strategy I am using as each ‘Card’ will lead them to Details and Reviews of each Yarn. If errors are made, users can edit the review they have posted. On the information architecture side, I will be structuring the content the product offers in a way that makes it easy for users to find what they’re looking for. This can be conveyed through documents like the site map, which outlines the hierarchy and pattern of each part of the product. This could include a home page where users can enter a color of yarn they wish to look for in the search bar. This would then lead to a cluster of cards each with a link that takes users to pages for the individual yarns.
 
@@ -36,7 +35,7 @@ For the surface and visual design, I used a consistent colour palette and layout
 
 ### Considerations for different devices
 
-My strategy to design across different devices is to adapt the experience for each group for each context of use. I will have to identify the different scenarios in which my website will be used across the different devices, and design an experience suitable for each of those scenarios. Different screens also allow for different input methods. Touch inputs - tap targets like CTA buttons have to be adequately sized and spaced well which gives my user interface breathing room. For large screens, I have to ensure that images do not lose quality as they scale up. Providing a consistent experience is crucial through multiple devices.
+My strategy to design across different devices is to adapt the experience for each group for each context of use. I will have to identify the different scenarios in which my website will be used across the different devices, and design an experience suitable for each of those scenarios. Different screens also allow for different input methods. Touch inputs - tap targets like CTA buttons have to be adequately sized and spaced well to give my user interface breathing room. For large screens, I have to ensure that images do not lose quality as they scale up. Providing a consistent experience is crucial across different devices.
 
 ## 2. Features
 
@@ -79,7 +78,7 @@ Provide an overview of the languages, frameworks, libraries and any other tools 
 
 ### Libraries used
 
-1. react-router-dom:https://github.com/remix-run/react-router (for routing different pages & redirecting user)
+1. react-router-dom: https://github.com/remix-run/react-router (for routing different pages & redirecting user)
 2. axios: https://github.com/axios/axios (to call apis)
 3. react-icons: https://github.com/react-icons/react-icons (various icons throughout the app)
 4. dayjs: https://github.com/iamkun/dayjs (display date time)
@@ -88,7 +87,7 @@ Provide an overview of the languages, frameworks, libraries and any other tools 
 
 ## 4. Sample Mongo Documents
 
-Add in a sample document from each collection you have in your MongoDB. You might save them as json files in a folder on your Express/Mongo repository.
+[Please refer to the Express repository for sample documents](https://github.com/nauxray/yarnscape-express/tree/main/samples)
 
 ## 5. Testing
 
@@ -96,30 +95,7 @@ Assumptions:
 
 1. User will upload images as image urls instead of image files.
 
-Provide proof that you have done testing on your project. You can provide step by step instructions for the examiner to test the project. Use your user stories and their acceptance criteria as a starting point. Do note that any unhandled exceptions, console errors etc will be considered as failing the testing criteria.
-
-### If we decide to write manual test cases
-
-You may want to provide manual test cases. An example of a manual test case could be:
-
-```
-1.  Test that user can sign in
-	a.  From the home page, click on the 'Login' button
-	b.  Fill in a valid username and password and click on the 'Login' button
-	c.  The user should be redirected to the profile page
-
-2.  Test user entering an invalid password
-	a.  From the home page, click on the 'Login' button
-	b.  FIll in a valid username but an invalid password, and click on the 'Login' button
-	c.  The user should be informed that the login has failed.
-```
-
-Need to provide:
-
-- A description of the test case
-- The steps for performing the test
-- The expected results
-- Any assumptions or prerequisites
+Test cases: [Please click here to view the test cases document](https://docs.google.com/document/d/1p75UCj_MAYMAR78FY0Zu2zIKAy6xb3Z-quQLTdeojdc/edit?usp=sharing)
 
 ## Credits
 
