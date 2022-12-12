@@ -19,6 +19,7 @@ This section will dive deeper into the strategies and thought processes while de
 ### Related Documents/Diagrams
 
 [Mobile & Desktop layout Figma](https://www.figma.com/file/TirCjnyOM7wp6AkEUEKAGc/yarnscape?node-id=0%3A1&t=UHLQME6A4gCQkhPd-3)
+
 [Mood Board & Wireframe Figma](https://www.figma.com/file/WuZyMa9XHDQgnUicjnNdby/yarnscape-wireframes?node-id=0%3A1&t=Nc3HB9fqKoYOKZuA-3)
 
 ### 5 Planes of UI/UX
