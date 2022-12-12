@@ -32,8 +32,9 @@ export default function Card({ yarn }) {
       )}
       <div className="card-details">
         <div className="yarn-name">{yarn.name}</div>
+        <span style={{ color: "var(--beige-yellow)" }}>{yarn.brand.name}</span>
         <div className="card-section">
-          <span>{yarn.brand.name}</span>
+          <span>{yarn.color}</span>
           <div className="yarn-rating">
             <span>{parseRating(yarn?.average_rating)}</span>
             <SlStar size={18} />

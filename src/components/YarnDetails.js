@@ -119,6 +119,14 @@ export default function YarnDetails({ user, logout }) {
           <div className="details-info-row">
             <img
               className="details-info-icon"
+              src={"/icons/paintbucket.svg"}
+              alt="paintbucket"
+            />
+            Color: {yarn?.color}
+          </div>
+          <div className="details-info-row">
+            <img
+              className="details-info-icon"
               src={"/icons/materials.svg"}
               alt="materials"
             />
