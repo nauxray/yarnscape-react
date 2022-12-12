@@ -1,0 +1,8 @@
+.App {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: var(--main-bg);
+  color: white;
+  font-weight: 300;
+  padding-bottom: 5rem;
+}

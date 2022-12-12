@@ -1,0 +1,135 @@
+.details-container {
+  width: 80%;
+  margin: 0 auto;
+}
+p.details-header {
+  text-align: center;
+  font-size: 1.75rem;
+}
+.details-top {
+  display: flex;
+  margin: 2rem auto;
+  max-width: 60rem;
+}
+.details-image-slideshow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.slideshow-arrow {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.slideshow-arrow:hover {
+  color: var(--beige-yellow);
+}
+.slideshow-page {
+  text-align: center;
+  color: var(--beige-yellow);
+}
+.details-rating {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  color: var(--beige-yellow);
+}
+.details-rating > span {
+  padding-top: 3px;
+}
+.details-info {
+  width: 40%;
+  margin: 2rem auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.details-info-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.2rem;
+}
+.details-info-weight {
+  margin-bottom: 1.5rem;
+}
+.details-info-row > .tools-info {
+  display: flex;
+  flex-direction: column;
+}
+.details-info-row > div[data-tooltipped] {
+  height: 20px;
+}
+.details-info-row .info {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #595959;
+}
+.details-info-row .info:hover {
+  color: var(--beige-yellow);
+}
+hr.yarn-details-divider {
+  margin: 2rem auto;
+  width: 80%;
+}
+.details-review-count {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.reviews-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.reviews-container > div.write-review-tooltip {
+  width: fit-content;
+  align-self: flex-end;
+  margin: 1rem 0;
+}
+.reviews-container a button {
+  padding: 0.3rem 1rem;
+}
+.reviews-container a.disabled {
+  pointer-events: none;
+}
+.reviews-container a.disabled button {
+  opacity: 50%;
+}
+.review-btn-text {
+  display: flex;
+  gap: 2.5rem;
+}
+@media only screen and (max-width: 768px) {
+  .details-top {
+    flex-direction: column;
+    width: 100%;
+  }
+  .details-info {
+    width: 90%;
+  }
+  .details-info-weight {
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 720px) {
+  p.details-header {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  .reviews-container {
+    width: 100%;
+    margin: 0;
+  }
+  .details-container {
+    width: 90%;
+  }
+  .details-image-slideshow {
+    gap: 1rem;
+  }
+  .reviews-container > div.write-review-tooltip {
+    align-self: center;
+  }
+}
