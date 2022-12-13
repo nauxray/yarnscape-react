@@ -70,9 +70,6 @@ Future features:
 1.  Better security measures for user password
 
 ## 3. Technologies Used
-
-Provide an overview of the languages, frameworks, libraries and any other tools that you have used to produce the project. Be sure to provide a short description of where in the project the technology is used, and a URL to its Github repository
-
 1. ReactJS for frontend
 2. ExpressJS for backend REST API
 3. MongoDB for storing data
@@ -80,11 +77,11 @@ Provide an overview of the languages, frameworks, libraries and any other tools 
 ### Libraries used
 
 1. react-router-dom: https://github.com/remix-run/react-router (for routing different pages & redirecting user)
-2. axios: https://github.com/axios/axios (to call apis)
+2. axios: https://github.com/axios/axios (to call various apis using the api utility classes under /utils/api)
 3. react-icons: https://github.com/react-icons/react-icons (various icons throughout the app)
-4. dayjs: https://github.com/iamkun/dayjs (display date time)
-5. react-toastify: https://github.com/fkhadra/react-toastify (toasters)
-6. react-tippy: https://github.com/tvkhoa/react-tippy (tooltips)
+4. dayjs: https://github.com/iamkun/dayjs (display date time on review cards and user joined date)
+5. react-toastify: https://github.com/fkhadra/react-toastify (toasters for showing user useful meesages based on api responses and input validation checks)
+6. react-tippy: https://github.com/tvkhoa/react-tippy (tooltips on yarn details page, to prompt user to login before writing review or to let user know that they have already left a review on that yarn before. Also used to show brand descriptions on filter/sort modal and add yarn form)
 
 ## 4. Sample Mongo Documents
 
