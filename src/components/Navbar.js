@@ -98,7 +98,7 @@ class Navbar extends React.Component {
           {this.props.user && (
             <div className="mobile-logout-btn">
               <Button
-                clickHandler={this.logout}
+                clickHandler={this.props.logout}
                 text={"Log out"}
                 styles={{
                   padding: "0.2rem 2.5rem",
